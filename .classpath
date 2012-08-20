@@ -13,5 +13,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="E:/专业相关/JSP/spring-framework-3.1.2.RELEASE/dist/org.springframework.orm-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/专业相关/JSP/spring-framework-3.1.2.RELEASE/dist/org.springframework.transaction-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/专业相关/JSP/spring-framework-3.1.2.RELEASE/dist/org.springframework.beans-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/专业相关/JSP/spring-framework-3.1.2.RELEASE/dist/org.springframework.core-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="com.321haole/WebRoot/WEB-INF/classes"/>
 </classpath>
