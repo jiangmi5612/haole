@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+    <title>好啦</title>
+  </head>
+  <body>
+    <div id="page-wrapper">
+		<!--头部-->
+		<div class="logo">好啦维修网</div>
+
+		<!--搜索框-->
+		<script type="text/javascript">
+			function clearIt(what)
+			{
+			if(what.value == what.defaultValue) what.value = '';
+			}
+			function setIt(what)
+			{
+			if(what.value == '') what.value = what.defaultValue;
+			}
+		</script>
+		<form id="search" name="search" method="get" action="search.action">
+			<span id="searchInputContainer">
+				<input type="text" name="query" value="请输入关键词" class="textinput" onfocus="clearIt(this)" onblur="setIt(this)"/>
+				<input type="image" src="image/search-field-bg-2.png" name="searchBtn" value="search"/>
+			</span>
+		</form>
+
+		<!--横向导航-->
+		<div class="nav">
+			<ul class="nav_ul">
+				<li class="nav_item all_product">全部产品类别</li>
+				<li class="nav_item"><a href="###">首页</a></li>
+				<li class="nav_item"><a href="###">重装系统</a></li>
+				<li class="nav_item"><a href="###">电脑硬件维修</a></li>
+				<li class="nav_item"><a href="###">打印机维修</a></li>
+			</ul>
+		</div>
+		
+		<!--纵向导航-->
+		<div class="hNav">
+			<ul class="hNav_ul">
+				<li class="hNav_item"><a href="###">台式机、笔记本</a></li>
+				<li class="hNav_item"><a href="###">影音数码</a></li>
+				<li class="hNav_item"><a href="###">存储</a></li>
+				<li class="hNav_item"><a href="###">办公耗材</a></li>
+				<li class="hNav_item"><a href="###">二手设备</a></li>
+				<span></span>
+			</ul>
+		</div>
+		
+		<!--轮播图片-->
+		<img class="image" src="image.jpg"/>
+
+		<!--特色产品-->
+		<div class="feature_product">
+			<img class="feature_img" src="image-1.jpg"/>
+			<div class="feature_text">
+				<p>CPU:Intel Core I5</p>
+				<p>RAM:4G</p>
+				<p>HDD:750G</p>
+				<p>GRAPHICS:1G</p>
+			</div>
+			<div class="feature_title">ThinkPad E420 14英寸笔记本电脑</div>
+		</div>
+		<div class="feature_product">
+			<img class="feature_img" src="image-1.jpg"/>
+			<div class="feature_text">
+				<p>CPU:Intel Core I5</p>
+				<p>RAM:4G</p>
+				<p>HDD:750G</p>
+				<p>GRAPHICS:1G</p>
+			</div>
+			<div class="feature_title">ThinkPad E420</div>
+		</div>
+		<div class="feature_product feature_last">
+			<img class="feature_img" src="image-1.jpg"/>
+			<div class="feature_text">
+				<p>CPU:Intel Core I5</p>
+				<p>RAM:4G</p>
+				<p>HDD:750G</p>
+				<p>GRAPHICS:1G</p>
+			</div>
+			<div class="feature_title">ThinkPad E420</div>
+		</div>
+		
+		<!--分类展示-->
+		<div id="categories">
+			<div class="category">
+				<div class="category_head">
+					<div class="category_title">台式机、笔记本</div>
+					<div class="more"><a href="###">查看更多该类产品</a></div>
+				</div>
+				<div class="image-4"><div class="text-21">SONY K123 大众最爱！</div></div>
+			</div>
+			<div class="category category_alternative">
+				<div class="category_head">
+					<div class="category_title">台式机、笔记本</div>
+					<div class="more"><a href="###">查看更多该类产品</a></div>
+				</div>
+			</div>
+		</div>
+		<!--清除浮动-->
+		<div class="clear"></div>
+		<!--页脚-->
+		<div class="footer">
+			<p style="position:relative;top:20px;text-align:center;width:100%;">北科传媒数码维修中心</p>
+		</div>
+    </div>
+  </body>
+</html>
