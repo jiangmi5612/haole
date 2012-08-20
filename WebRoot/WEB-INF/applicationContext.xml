@@ -1,1 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/haole" />
+		<property name="username" value="root"/>
+		<property name="password" value=""/>
+	</bean>
+	<!-- Hibernate的SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<!-- 指定刚才配置好的数据源 -->
+			<ref local="dataSource"/>
+		</property>
+		<property name="mappingResources">
+			<!-- 指出所有hbm映射文件的位置 -->
+			<list>
+				<value>domain/Category.hbm.xml</value>
+				<value>domain/Product.hbm.xml</value>
+				<value>domain/Block.hbm.xml</value>
+				<value>domain/Productmeta.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<!-- 填写Hibernate的属性项 -->
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.connection.release_mode">auto</prop>
+				<prop key="hibernate.autoReconnect">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<!-- 指定刚才配置好的sessionFactory -->
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- 配置各控制反转 -->
+	<bean id="categoryDAO" class="dao.imp.CategoryDAO">
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="categoryDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref local="transactionManager"/>
+		</property>
+		<property name="target">
+			<ref local="categoryDAO"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="categoryService" class="service.imp.CategoryService">
+		<property name="categoryDAO">
+			<ref local="categoryDAOProxy"/>
+		</property>
+	</bean>
+	<bean id="categoryServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref local="transactionManager"/>
+		</property>
+		<property name="target">
+			<ref local="categoryService"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 配置Action内容 -->
+	<bean id="qCategory" class="action.QCategory">
+		<property name="categoryService">
+			<ref local="categoryServiceProxy"/>
+		</property>
+	</bean>
+</beans>

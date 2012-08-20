@@ -3,7 +3,7 @@
                 "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
                 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" > 
 <hibernate-mapping>
-	<class name="domain.Product" table="product">
+	<class name="domain.Block" table="block">
 		<id name="id" length="32" column="id" type="java.lang.String">
 			<generator class="uuid.hex"></generator>
 		</id>
