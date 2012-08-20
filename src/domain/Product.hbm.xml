@@ -15,5 +15,9 @@
 		<property name="productInfo" type="java.lang.String" column="productInfo" length="9999" not-null="false" />
 		<many-to-one name="category" class="domain.Category" column="categorty"></many-to-one>
 		<property name="browseTimes" type="java.lang.Integer" column="browseTimes" not-null="false" />
+		<set name="productmetas" inverse="true" cascade="all" lazy="true">
+			<key column="product" />
+			<one-to-many class="domain.Productmeta"/>
+		</set>
 	</class>
 </hibernate-mapping>

@@ -3,6 +3,8 @@
  */
 package domain;
 
+import java.util.Set;
+
 /**
  * @author 姜敏
  * @version 1.0.0
@@ -27,7 +29,7 @@ public class Product {
 	 */
 	public Product(String productName, String productDescription,
 			float marketPrice, float productPrice, String productFeature,
-			String productInfo, Category category, int browseTimes) {
+			String productInfo, Category category, int browseTimes, Set<Productmeta> productmetas) {
 		super();
 		this.productName = productName;
 		this.productDescription = productDescription;
@@ -37,6 +39,7 @@ public class Product {
 		this.productInfo = productInfo;
 		this.category = category;
 		this.browseTimes = browseTimes;
+		this.productmetas = productmetas;
 	}
 	
 	//产品ID
@@ -65,6 +68,9 @@ public class Product {
 	
 	//产品的浏览量计数
 	private int browseTimes;
+	
+	//产品的扩展信息集合
+	private Set<Productmeta> productmetas;
 	
 	public String getId() {
 		return id;
@@ -136,6 +142,20 @@ public class Product {
 
 	public void setBrowseTimes(int browseTimes) {
 		this.browseTimes = browseTimes;
+	}
+
+	/**
+	 * @return the productmetas
+	 */
+	public Set<Productmeta> getProductmetas() {
+		return productmetas;
+	}
+
+	/**
+	 * @param productmetas the productmetas to set
+	 */
+	public void setProductmetas(Set<Productmeta> productmetas) {
+		this.productmetas = productmetas;
 	}
 
 	@Override

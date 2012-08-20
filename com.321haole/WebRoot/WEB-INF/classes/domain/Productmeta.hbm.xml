@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+                "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" > 
+<hibernate-mapping>
+	<class name="domain.Productmeta" table="productmeta">
+		<id name="id" length="32" column="id" type="java.lang.String">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="metaKey" type="java.lang.String" column="metaKey" length="128" not-null="false" />
+		<property name="metaValue" type="java.lang.String" column="metaValue" length="512" not-null="false" />
+		<many-to-one name="product" class="domain.Product" column="product"></many-to-one>
+	</class>
+</hibernate-mapping>
