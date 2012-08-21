@@ -6,11 +6,11 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="false" />
+    <constant name="struts.devMode" value="true" />
 
     <package name="global" extends="struts-default">
-		<action name="qcategory" method="get" class="action.QCategory">
-			<result>index.html</result>
+		<action name="qcategory" class="action.QCategory">
+			<result name="success">index.html</result>
 		</action>
     </package>
 
