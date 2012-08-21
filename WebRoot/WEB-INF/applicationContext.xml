@@ -4,7 +4,7 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/haole" />
+		<property name="url" value="jdbc:mysql://localhost/haole?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root"/>
 		<property name="password" value=""/>
 	</bean>
@@ -31,6 +31,7 @@
 				<prop key="hibernate.generate_statistics">true</prop>
 				<prop key="hibernate.connection.release_mode">auto</prop>
 				<prop key="hibernate.autoReconnect">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>

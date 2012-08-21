@@ -4,8 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.objectFactory" value="spring"/>
+    <!-- <constant name="struts.enable.DynamicMethodInvocation" value="false" /> -->
     <constant name="struts.devMode" value="true" />
 
     <package name="global" extends="struts-default">

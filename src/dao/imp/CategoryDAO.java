@@ -2,7 +2,10 @@ package dao.imp;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 
 import dao.ICategoryDAO;
 import domain.Category;
@@ -12,7 +15,9 @@ public class CategoryDAO extends HibernateDaoSupport implements ICategoryDAO {
 	public CategoryDAO(){}
 	
 	public void addCategory(Category category) {
-		this.getHibernateTemplate().save(category);
+		SessionFactory sf = getSessionFactory();
+		Session session = sf.getCurrentSession();
+		session.save(category);
 		
 	}
 
