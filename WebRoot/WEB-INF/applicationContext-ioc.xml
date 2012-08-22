@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 配置各控制反转 -->
+		<!-- ====================
+		Category相关 ============-->
+		<bean id="categoryDAO" class="dao.imp.CategoryDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="categoryDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="categoryDAO"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		<bean id="categoryService" class="service.imp.CategoryService">
+			<property name="categoryDAO">
+				<ref local="categoryDAOProxy"/>
+			</property>
+		</bean>
+		<bean id="categoryServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="categoryService"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		
+		<!-- ===================
+		Option相关 =============-->
+		<bean id="optionDAO" class="dao.imp.OptionDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="optionDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="optionDAO"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		<bean id="optionService" class="service.imp.OptionService">
+			<property name="optionDAO">
+				<ref local="optionDAOProxy"/>
+			</property>
+		</bean>
+		<bean id="optionServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="optionService"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+</beans>

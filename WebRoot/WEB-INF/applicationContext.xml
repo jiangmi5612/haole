@@ -21,6 +21,7 @@
 				<value>domain/Product.hbm.xml</value>
 				<value>domain/Block.hbm.xml</value>
 				<value>domain/Productmeta.hbm.xml</value>
+				<value>domain/Option.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -42,47 +43,11 @@
 			<ref local="sessionFactory"/>
 		</property>
 	</bean>
-	<!-- 配置各控制反转 -->
-	<bean id="categoryDAO" class="dao.imp.CategoryDAO">
-		<property name="sessionFactory">
-			<ref local="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="categoryDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="transactionManager">
-			<ref local="transactionManager"/>
-		</property>
-		<property name="target">
-			<ref local="categoryDAO"/>
-		</property>
-		<property name="transactionAttributes">
-			<props>
-				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
-			</props>
-		</property>
-	</bean>
-	<bean id="categoryService" class="service.imp.CategoryService">
-		<property name="categoryDAO">
-			<ref local="categoryDAOProxy"/>
-		</property>
-	</bean>
-	<bean id="categoryServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="transactionManager">
-			<ref local="transactionManager"/>
-		</property>
-		<property name="target">
-			<ref local="categoryService"/>
-		</property>
-		<property name="transactionAttributes">
-			<props>
-				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
-			</props>
-		</property>
-	</bean>
-	<!-- 配置Action内容 -->
+	
+	<!-- 配置前台Action相关的bean -->
 	<bean id="qCategory" class="action.QCategory">
 		<property name="categoryService">
-			<ref local="categoryServiceProxy"/>
+			<ref bean="categoryServiceProxy"/>
 		</property>
 	</bean>
 </beans>

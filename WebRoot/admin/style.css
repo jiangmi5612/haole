@@ -1,0 +1,18 @@
+*{
+	font-family:Microsoft Yahei;
+	font-size:13px;
+}
+.login_box{
+	width:220px;
+	height:400px;
+	margin:0 auto;
+	margin-top:300px;
+}
+#login{
+	
+}
+.login_title{
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+}

@@ -16,4 +16,9 @@
 			</result>
 		</action>
     </package>
+    <package name="admin" namespace="/admin" extends="struts-default">
+    	<action name="login" method="login" class="action.Admin">
+    		<result name="input">/admin/login.jsp</result>
+    	</action>
+    </package>
 </struts>
