@@ -1,13 +1,18 @@
 package action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.catalina.util.MD5Encoder;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import service.ICategoryService;
 import service.IOptionService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import domain.Category;
 import domain.Option;
 
 
@@ -16,11 +21,22 @@ public class Admin extends ActionSupport {
 	
 	private IOptionService optionService;
 	
+	private ICategoryService categoryService;
+	
 	//获取表单中的用户名
 	private String username; 
 	
 	//获取表单中的密码
 	private String password;
+	
+	//获取表单中的类别名称
+	private String categoryName;
+	
+	//获取表单中的类别描述
+	private String categoryDescription;
+	
+	//类别列表，用以存储获取到的所有类别
+	private List<Category> listCategory = new ArrayList<Category>();
 
 	/**
 	 * @param optionService the optionService to set
@@ -31,6 +47,15 @@ public class Admin extends ActionSupport {
 	
 	
 	
+	/**
+	 * @param categoryService the categoryService to set
+	 */
+	public void setCategoryService(ICategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+
+
+
 	/**
 	 * @return the username
 	 */
@@ -65,6 +90,46 @@ public class Admin extends ActionSupport {
 		this.password = password;
 	}
 
+	/**
+	 * @return the categoryName
+	 */
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	/**
+	 * @param categoryName the categoryName to set
+	 */
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+
+	/**
+	 * @return the categoryDescription
+	 */
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+
+	/**
+	 * @param categoryDescription the categoryDescription to set
+	 */
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
+
+	
+	/**
+	 * @return the listCategory
+	 */
+	public List<Category> getListCategory() {
+		return listCategory;
+	}
+
+
 
 	/**
 	 * 默认方法
@@ -79,7 +144,7 @@ public class Admin extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String login() throws Exception{
-		if(username!=null && username !="" && password != null && password!="" ) {
+		if(username!=null && username.length()!=0 && password != null && password.length() != 0 ) {
 			//如果用户名密码均不为空
 			Option usernameOption = optionService.getOptionByKeyAndValue("username",username);
 			MD5Encoder md5 = new MD5Encoder();
@@ -101,5 +166,44 @@ public class Admin extends ActionSupport {
 		else { //如果用户名或者密码为空，则返回重填
 			return INPUT;
 		}
+	}
+	
+	/**
+	 * 增加新产品类别
+	 * @return
+	 * @throws Exception
+	 */
+	public String addCategory() throws Exception{
+		if(categoryName != null && categoryName.length()!=0){
+			//如果类别名称不为空，则增加这个类别
+		 	Category category = new Category();
+			category.setCatName(categoryName);
+			category.setCatDescription(categoryDescription);
+			categoryService.addCategory(category);
+			//如果成功存入数据库
+			if(category.getId()!=null){
+				//清空界面元素
+				categoryName = null;
+				categoryDescription = null;
+				return SUCCESS;
+			}
+			else { //否则需要重新输入
+				return INPUT;
+			}
+		}
+		else { //如果类别名称为空，则需要重新输入
+			return INPUT;
+		}
+	}
+	
+	/**
+	 * 获取所有现有的产品类别
+	 * @return
+	 * @throws Exception
+	 */
+	public String listCategory() throws Exception {
+		//本系统中，由于小企业的产品类别往往较少，因此不分页，直接一次性取出
+		listCategory = categoryService.getAllCategorie();
+		return SUCCESS;
 	}
 }

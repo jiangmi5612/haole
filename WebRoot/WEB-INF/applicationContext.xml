@@ -7,9 +7,9 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-	<!-- 配置切面类 -->
+	<!-- 配置切面类
 	<aop:aspectj-autoproxy />
-	<bean id="aspectBean" class="commons.AspectBean"/>
+	<bean id="aspectBean" class="commons.AspectBean"/> -->
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

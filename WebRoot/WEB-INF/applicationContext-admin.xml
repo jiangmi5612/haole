@@ -6,5 +6,8 @@
 		<property name="optionService">
 			<ref bean="optionServiceProxy"/>
 		</property>
+		<property name="categoryService">
+			<ref bean="categoryServiceProxy"/>
+		</property>
 	</bean>
 </beans>

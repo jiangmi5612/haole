@@ -22,11 +22,12 @@ public class Block {
 	 * @param blockDescription
 	 * @param blockHtml
 	 */
-	public Block(String blockName, String blockDescription, String blockHtml) {
+	public Block(String blockType,String blockName, String blockDescription, String blockHtml) {
 		super();
 		this.blockName = blockName;
 		this.blockDescription = blockDescription;
 		this.blockHtml = blockHtml;
+		this.blockType = blockType;
 	}
 	
 	
@@ -85,6 +86,22 @@ public class Block {
 	public void setBlockHtml(String blockHtml) {
 		this.blockHtml = blockHtml;
 	}
+	
+	
+
+	/**
+	 * @return the blockType
+	 */
+	public String getBlockType() {
+		return blockType;
+	}
+
+	/**
+	 * @param blockType the blockType to set
+	 */
+	public void setBlockType(String blockType) {
+		this.blockType = blockType;
+	}
 
 	/* 获取代码段基本信息
 	 * @see java.lang.Object#toString()
@@ -98,6 +115,9 @@ public class Block {
 
 	//代码段编号
 	private String id;
+	
+	//代码类别，自定义字符串，用来扩展功能，如新闻列表、简单评论等
+	private String blockType;
 	
 	//代码段名称
 	private String blockName;

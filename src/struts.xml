@@ -2,12 +2,7 @@
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
-
 <struts>
-	<constant name="struts.objectFactory" value="spring"/>
-    <!-- <constant name="struts.enable.DynamicMethodInvocation" value="false" /> -->
-    <constant name="struts.devMode" value="true" />
-
     <package name="global" extends="struts-default">
 		<action name="qcategory" method="qCate" class="action.QCategory">
 			<result type="stream">
@@ -16,9 +11,27 @@
 			</result>
 		</action>
     </package>
+    <!-- 配置后台管理相关Action -->
     <package name="admin" namespace="/admin" extends="struts-default">
+    	<!-- 配置全局结果 -->
+    	<global-results>
+    		<result name="login">/admin/login.jsp</result>
+    	</global-results>
+    	<!-- 配置全局异常 -->
+ 	    <global-exception-mappings>
+    		<exception-mapping result="login" exception="commons.UnLoginException" />
+    	</global-exception-mappings>
+    	<!-- 逐个配置action -->
     	<action name="login" method="login" class="action.Admin">
+    		<result>/admin/main.jsp</result>
     		<result name="input">/admin/login.jsp</result>
+    	</action>
+    	<action name="addCategory" method="addCategory" class="action.Admin">
+    		<result>/admin/addCategory.jsp</result>
+    		<result name="input">/admin/addCategory.jsp</result>
+    	</action>
+    	<action name="listCategory" method="listCategory" class="action.Admin">
+    		<result>/admin/listCategory.jsp</result>
     	</action>
     </package>
 </struts>

@@ -2,6 +2,7 @@ package dao.imp;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -25,10 +26,7 @@ public class CategoryDAO implements ICategoryDAO {
 	public CategoryDAO(){}
 	
 	public void addCategory(Category category) {
-		Session session = sessionFactory.getCurrentSession();
-		
-		session.save(category);
-		session.flush();
+		sessionFactory.getCurrentSession().save(category);
 	}
 
 	public void deleteCategory(Category category) {
@@ -58,7 +56,8 @@ public class CategoryDAO implements ICategoryDAO {
 	public List<Category> getAllCategorie() {
 		//String hsql = "FROM Category";
 		//return (List<Category>)this.getHibernateTemplate().find(hsql);
-		return null;
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Category");
+		return query.list();
 	}
 	
 }
