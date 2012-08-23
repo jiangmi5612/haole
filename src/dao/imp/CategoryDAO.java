@@ -26,36 +26,32 @@ public class CategoryDAO implements ICategoryDAO {
 	public CategoryDAO(){}
 	
 	public void addCategory(Category category) {
-		sessionFactory.getCurrentSession().save(category);
+		this.sessionFactory.getCurrentSession().save(category);
 	}
 
 	public void deleteCategory(Category category) {
-		//this.getHibernateTemplate().delete(category);
-		
+		this.sessionFactory.getCurrentSession().delete(category);
 	}
 
 	public void updateCategory(Category category) {
-		//this.getHibernateTemplate().update(category);
+		this.sessionFactory.getCurrentSession().update(category);
 		
 	}
 
 	public Category getCategoryById(String id) {
-		//return (Category)this.getHibernateTemplate().get(Category.class, id);
-		return null;
+		return (Category)this.sessionFactory.getCurrentSession().get(Category.class, id);
 	}
 
 	/**
 	 * 严格意义上讲，Category的Name并不唯一，此处返回取得的第一个值
 	 */
 	public Category getCategoryByName(String catName) {
-		//String hsql = "FROM Category WHERE catName='"+catName+"'";
-		//return (Category)this.getHibernateTemplate().find(hsql).get(0);
-		return null;
+		String hsql = "FROM Category WHERE catName='"+catName+"'";
+		Query query = this.sessionFactory.getCurrentSession().createQuery(hsql);
+		return (Category)query.list().get(0);
 	}
 
 	public List<Category> getAllCategorie() {
-		//String hsql = "FROM Category";
-		//return (List<Category>)this.getHibernateTemplate().find(hsql);
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Category");
 		return query.list();
 	}

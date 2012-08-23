@@ -1,5 +1,8 @@
 package action;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +26,17 @@ public class Admin extends ActionSupport {
 	
 	private ICategoryService categoryService;
 	
+	//获取URL中指出的操作类型
+	private String action;
+	
 	//获取表单中的用户名
 	private String username; 
 	
 	//获取表单中的密码
 	private String password;
+	
+	//获取表单或链接中类别的id
+	private String categoryId;
 	
 	//获取表单中的类别名称
 	private String categoryName;
@@ -37,6 +46,29 @@ public class Admin extends ActionSupport {
 	
 	//类别列表，用以存储获取到的所有类别
 	private List<Category> listCategory = new ArrayList<Category>();
+	
+	//用以给出ajax的返回结果
+	private InputStream outputStream;
+
+	
+	
+	/**
+	 * @return the action
+	 */
+	public String getAction() {
+		return action;
+	}
+
+
+
+	/**
+	 * @param action the action to set
+	 */
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+
 
 	/**
 	 * @param optionService the optionService to set
@@ -107,6 +139,24 @@ public class Admin extends ActionSupport {
 
 
 	/**
+	 * @return the categoryId
+	 */
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+
+
+	/**
+	 * @param categoryId the categoryId to set
+	 */
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+
+	/**
 	 * @return the categoryDescription
 	 */
 	public String getCategoryDescription() {
@@ -129,6 +179,13 @@ public class Admin extends ActionSupport {
 		return listCategory;
 	}
 
+	/**
+	 * @return the outputStream
+	 */
+	public InputStream getOutputStream() {
+		return outputStream;
+	}
+
 
 
 	/**
@@ -147,7 +204,6 @@ public class Admin extends ActionSupport {
 		if(username!=null && username.length()!=0 && password != null && password.length() != 0 ) {
 			//如果用户名密码均不为空
 			Option usernameOption = optionService.getOptionByKeyAndValue("username",username);
-			MD5Encoder md5 = new MD5Encoder();
 			String md5Password = DigestUtils.md5Hex(password.getBytes());
 			//TODO:改为使用js在表单提交前加密，防止用户密码泄露，此处只能防止明文密码被爆库
 			Option passwordOption = optionService.getOptionByKeyAndValue("password",md5Password);
@@ -197,13 +253,33 @@ public class Admin extends ActionSupport {
 	}
 	
 	/**
-	 * 获取所有现有的产品类别
+	 * 列出所有类别
 	 * @return
 	 * @throws Exception
 	 */
 	public String listCategory() throws Exception {
-		//本系统中，由于小企业的产品类别往往较少，因此不分页，直接一次性取出
+		//如果执行列表操作
+		//由于小企业的产品类别往往较少，因此本系统对类别列表不分页，直接一次性取出
 		listCategory = categoryService.getAllCategorie();
-		return SUCCESS;
+		return "list";
+	}
+	
+	/**
+	 * 删除某个类别
+	 * @return
+	 * @throws Exception
+	 */
+	public String delCategory() throws Exception {
+		//首先查询该类别是否存在
+		Category category = categoryService.getCategoryById(categoryId);
+		if(category != null){
+			//如果删除成功
+			categoryService.deleteCategory(category);
+			outputStream = new ByteArrayInputStream("{result:true}".getBytes());
+		}
+		else {
+			outputStream = new ByteArrayInputStream("{result:false}".getBytes());
+		}
+		return "json";
 	}
 }

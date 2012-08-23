@@ -57,7 +57,7 @@ public class CategoryService implements ICategoryService {
 	}
 
 	public Category getCategoryById(String id) {
-		if(id == null)
+		if(id == null || id.length()==0)
 			return null;
 		else {
 			return categoryDAO.getCategoryById(id);
@@ -65,7 +65,7 @@ public class CategoryService implements ICategoryService {
 	}
 
 	public Category getCategoryByName(String catName) {
-		if(catName == null)
+		if(catName == null || catName.length()==0)
 			return null;
 		return categoryDAO.getCategoryByName(catName);
 	}

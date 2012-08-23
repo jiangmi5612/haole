@@ -26,7 +26,7 @@
 	           {id:1,pId:0,name:"好乐快速建站系统",open:true},
 	           {id:11,pId:1,name:"类别管理",open:true},
 	           {id:111,pId:11,name:"增加类别",url:"addCategory.jsp",target:"adminPages"},
-	           {id:112,pId:11,name:"类别列表"},
+	           {id:112,pId:11,name:"类别列表",url:"listCategory.action",target:"adminPages"},
 	           {id:12,pId:1,name:"产品管理",open:true},
 	           {id:121,pId:12,name:"增加产品"},
 	           {id:122,pId:12,name:"产品列表"},
@@ -39,18 +39,25 @@
 </script>
 <title>后台管理 - 好乐快速建站系统</title>
 </head>
-<body>
-	<!-- 后台管理主页的顶部标题栏 -->
-	<div class="main_top">
-		<h1>好乐快速建站系统</h1>
-	</div>
-	<!-- 后台管理主页的左侧用于放置功能目录树 -->
-	<div class="main_left">
-		<ul id="tree" class="ztree"></ul>
-	</div>
-	<!-- 后台管理主页的右侧是一个iframe，用于指向特定的功能处理页面 -->
-	<div class="main_right">
-		<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=adminPages.document.body.scrollHeight"></iframe>
+<body class="bg">
+	<div class="main">
+		<!-- 后台管理主页的顶部标题栏 -->
+		<div class="main_top">
+			<h1>好乐快速建站系统</h1>
+			<a href="/haole" class="a_left">&lt;返回前台</a>
+			<a href="http://www.misins.org" class="a_right">前往信研所&gt;</a>
+		</div>
+		<div class="main_body">
+			<!-- 后台管理主页的左侧用于放置功能目录树 -->
+			<div class="main_left">
+				<ul id="tree" class="ztree"></ul>
+			</div>
+			<!-- 后台管理主页的右侧是一个iframe，用于指向特定的功能处理页面 -->
+			<div class="main_right">
+				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=adminPages.document.body.scrollHeight"></iframe>
+			</div>
+			<div class="clear"></div>
+		</div>
 	</div>
 </body>
 </html>

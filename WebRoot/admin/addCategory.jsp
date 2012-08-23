@@ -9,7 +9,7 @@
 <title>增加类别</title>
 </head>
 <body>
-	<s:form action="/admin/addCategory.action" method="post">
+	<s:form action="addCategory" method="post">
 		<s:textfield label="类别名称" name="categoryName"></s:textfield>
 		<s:textarea label="类别描述" cols="60" rows="5" name="categoryDescription"></s:textarea>
 		<s:submit value="确定"></s:submit>
