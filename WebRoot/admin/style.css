@@ -1,6 +1,7 @@
 /* CSS crunched with Crunch - http://crunchapp.net/ */
 *{font-family:Microsoft Yahei;font-size:13px;overflow:display;margin:0;padding:0;text-decoration:none;}
 .clear{clear:both;}
+.right{float:right;}
 .shadowBorder{-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.1);-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.1);box-shadow:0 0 10px rgba(0, 0, 0, 0.1);}
 .login_box{width:220px;height:400px;margin:0 auto;margin-top:250px;}
 .login_title{text-align:center;font-size:18px;font-weight:bold;}
@@ -9,7 +10,7 @@
 .main_top{width:100%;height:116px;}.main_top h1{font-size:30px;color:white;position:relative;top:28px;}
 .main_top div{width:100%;}
 .main_top a{display:block;font-size:16px;color:white;position:relative;top:40px;}
-.a_left{float:left;}
+.a_left{background:url('../image/left-32.png') no-repeat left center;height:32px;line-height:32px;padding-left:36px;float:left;}
 .a_right{float:right;}
 .main_body{background-color:white;-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.1);-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.1);box-shadow:0 0 10px rgba(0, 0, 0, 0.1);min-height:728px;padding:10px;}
 .main_left{width:220px;float:left;left:0;}
@@ -17,3 +18,7 @@
 .adminPages{width:100%;border:none;}
 .listTable{width:100%;border-bottom:1px solid #49a1e5;border-right:1px solid #49a1e5;-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.1);-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.1);box-shadow:0 0 10px rgba(0, 0, 0, 0.1);}.listTable tr{line-height:26px;}
 .listTable tbody tr td,.listTable thead tr th{border-top:1px solid #49a1e5;border-left:1px solid #49a1e5;padding:0 0.5em;}
+#addProduct label{display:block;width:80px;text-align:right;float:left;padding:5px 10px;}
+#ckeditor{float:right;width:600px;}
+input[type="submit"],.metro-button{border:2px #e2e2e2 solid;padding:8px 16px;margin:10px 10px 0 10px;color:#fff !important;background:#4ea6ea;cursor:pointer;min-width:95px !important;display:inline-block;position:relative;text-align:center;border-radius:0;}
+input[type="submit"]:hover,.metro-button:hover{background:#3a92d6;}

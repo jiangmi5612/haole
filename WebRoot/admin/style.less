@@ -12,6 +12,9 @@
 .clear{
     clear:both;
 }
+.right{
+    float:right;
+}
 .shadowBorder{
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -58,6 +61,10 @@
     }
 }
 .a_left{
+    background:url('../image/left-32.png') no-repeat left center;
+    height:32px;
+    line-height:32px;
+    padding-left:36px;
 	float:left;
 }
 .a_right{
@@ -96,4 +103,34 @@
         border-left:@tableBorder;
     	padding:0 0.5em;
     }
+}
+/*addProduct.jsp*/
+#addProduct{
+    label{
+        display:block;
+        width:80px;
+        text-align:right;
+        float:left;
+        padding:5px 10px;
+    }
+}
+#ckeditor{
+    float:right;
+    width:600px;
+}
+input[type="submit"],.metro-button{
+    border:2px #e2e2e2 solid;
+    padding:8px 16px;
+    margin:10px 10px 0 10px;
+    color:#fff !important;
+    background:@lightBlue;
+    cursor:pointer;
+    min-width:95px !important;
+    display:inline-block;
+    position:relative;
+    text-align:center;
+    border-radius:0;
+}
+input[type="submit"]:hover,.metro-button:hover{
+    background:@lightBlue - 20;
 }

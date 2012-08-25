@@ -44,7 +44,7 @@
 		<!-- 后台管理主页的顶部标题栏 -->
 		<div class="main_top">
 			<h1>好乐快速建站系统</h1>
-			<a href="/haole" class="a_left">&lt;返回前台</a>
+			<a href="/haole" class="a_left">返回前台</a>
 			<a href="http://www.misins.org" class="a_right">前往信研所&gt;</a>
 		</div>
 		<div class="main_body">
@@ -54,7 +54,7 @@
 			</div>
 			<!-- 后台管理主页的右侧是一个iframe，用于指向特定的功能处理页面 -->
 			<div class="main_right">
-				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight"></iframe>
+				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight+500"></iframe>
 			</div>
 			<div class="clear"></div>
 		</div>
