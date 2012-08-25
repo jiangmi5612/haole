@@ -16,14 +16,18 @@ public interface IProductDAO {
 	
 	public void deleteProduct(Product product);
 	
+	public void deleteProductById(int id);
+	
 	public void updateProduct(Product product);
 	
-	public Product getProductById(String id);
+	public Product getProductById(int id);
 	
 	//按照类别id获取产品
 	public List<Product> getProductByCatId(String catId);
 	
 	public List<Product> getProductByProductName(String productName);
+	
+	public List<Product> getProductWithPage(int itemsPerPage,int pageNo);
 	
 	public List<Product> getAllProduct();
 }

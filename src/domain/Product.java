@@ -29,7 +29,7 @@ public class Product {
 	 */
 	public Product(String productName, String productDescription,
 			float marketPrice, float productPrice, String productFeature,
-			String productInfo, Category category, int browseTimes, Set<Productmeta> productmetas) {
+			String productInfo, Category category, int browseTimes,String img) {
 		super();
 		this.productName = productName;
 		this.productDescription = productDescription;
@@ -39,11 +39,11 @@ public class Product {
 		this.productInfo = productInfo;
 		this.category = category;
 		this.browseTimes = browseTimes;
-		this.productmetas = productmetas;
+		this.img = img;
 	}
 	
 	//产品ID
-	private String id;
+	private int id;
 
 	//产品名称
 	private String productName;
@@ -69,14 +69,17 @@ public class Product {
 	//产品的浏览量计数
 	private int browseTimes;
 	
+	//产品的缩略图
+	private String img;
+	
 	//产品的扩展信息集合
 	private Set<Productmeta> productmetas;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	protected void setId(String id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 
@@ -142,6 +145,20 @@ public class Product {
 
 	public void setBrowseTimes(int browseTimes) {
 		this.browseTimes = browseTimes;
+	}
+
+	/**
+	 * @return the img
+	 */
+	public String getImg() {
+		return img;
+	}
+
+	/**
+	 * @param img the img to set
+	 */
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	/**

@@ -28,8 +28,8 @@
 	           {id:111,pId:11,name:"增加类别",url:"addCategory.jsp",target:"adminPages"},
 	           {id:112,pId:11,name:"类别列表",url:"listCategory.action",target:"adminPages"},
 	           {id:12,pId:1,name:"产品管理",open:true},
-	           {id:121,pId:12,name:"增加产品"},
-	           {id:122,pId:12,name:"产品列表"},
+	           {id:121,pId:12,name:"增加产品",url:"renderCatList",target:"adminPages"},
+	           {id:122,pId:12,name:"产品列表",url:"listProduct.action",target:"adminPages"},
 	           ];
 	
 	$(document).ready(function(){
@@ -54,7 +54,7 @@
 			</div>
 			<!-- 后台管理主页的右侧是一个iframe，用于指向特定的功能处理页面 -->
 			<div class="main_right">
-				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=adminPages.document.body.scrollHeight"></iframe>
+				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight"></iframe>
 			</div>
 			<div class="clear"></div>
 		</div>

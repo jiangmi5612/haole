@@ -4,8 +4,8 @@
                 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" > 
 <hibernate-mapping>
 	<class name="domain.Product" table="product">
-		<id name="id" length="32" column="id" type="java.lang.String">
-			<generator class="uuid.hex"></generator>
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="identity"></generator>
 		</id>
 		<property name="productName" type="java.lang.String" column="productName" length="128" not-null="false" />
 		<property name="productDescription" type="java.lang.String" column="productDescription" length="256" not-null="false" />
@@ -13,8 +13,9 @@
 		<property name="productPrice" type="java.lang.Float" column="productPrice" not-null="false" />
 		<property name="productFeature" type="java.lang.String" column="productFeature" length="256" not-null="false" />
 		<property name="productInfo" type="java.lang.String" column="productInfo" length="9999" not-null="false" />
-		<many-to-one name="category" class="domain.Category" column="categorty"></many-to-one>
+		<many-to-one name="category" class="domain.Category" column="category"></many-to-one>
 		<property name="browseTimes" type="java.lang.Integer" column="browseTimes" not-null="false" />
+		<property name="img" type="java.lang.String" column="img" length="999"></property>
 		<set name="productmetas" inverse="true" cascade="all" lazy="true">
 			<key column="product" />
 			<one-to-many class="domain.Productmeta"/>

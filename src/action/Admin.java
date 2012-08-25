@@ -225,30 +225,40 @@ public class Admin extends ActionSupport {
 	}
 	
 	/**
-	 * 增加新产品类别
+	 * 增加或者更新产品类别
 	 * @return
 	 * @throws Exception
 	 */
 	public String addCategory() throws Exception{
-		if(categoryName != null && categoryName.length()!=0){
-			//如果类别名称不为空，则增加这个类别
-		 	Category category = new Category();
+		if(categoryId != null && categoryId.length() > 0){
+			//如果传来的变量中有categoryId字段，则执行更新操作
+			Category category = categoryService.getCategoryById(categoryId);
 			category.setCatName(categoryName);
 			category.setCatDescription(categoryDescription);
-			categoryService.addCategory(category);
-			//如果成功存入数据库
-			if(category.getId()!=null){
-				//清空界面元素
-				categoryName = null;
-				categoryDescription = null;
-				return SUCCESS;
+			categoryService.updateCategory(category);
+			return INPUT;
+		}
+		else { //否则，即传来的变量中categoryId字段无效，则执行新增操作
+			if(categoryName != null && categoryName.length()!=0){
+				//如果类别名称不为空，则增加这个类别
+			 	Category category = new Category();
+				category.setCatName(categoryName);
+				category.setCatDescription(categoryDescription);
+				categoryService.addCategory(category);
+				//如果成功存入数据库
+				if(category.getId()!=null){
+					//清空界面元素
+					categoryName = null;
+					categoryDescription = null;
+					return SUCCESS;
+				}
+				else { //否则需要重新输入
+					return INPUT;
+				}
 			}
-			else { //否则需要重新输入
+			else { //如果类别名称为空，则需要重新输入
 				return INPUT;
 			}
-		}
-		else { //如果类别名称为空，则需要重新输入
-			return INPUT;
 		}
 	}
 	
@@ -270,16 +280,45 @@ public class Admin extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String delCategory() throws Exception {
-		//首先查询该类别是否存在
-		Category category = categoryService.getCategoryById(categoryId);
-		if(category != null){
-			//如果删除成功
-			categoryService.deleteCategory(category);
-			outputStream = new ByteArrayInputStream("{result:true}".getBytes());
+		if(categoryId != null && categoryId.length()>0){
+			//首先查询该类别是否存在
+			Category category = categoryService.getCategoryById(categoryId);
+			if(category != null){
+				//如果删除成功
+				categoryService.deleteCategory(category);
+				outputStream = new ByteArrayInputStream("{result:true}".getBytes());
+			}
+			else {
+				outputStream = new ByteArrayInputStream("{result:false}".getBytes());
+			}
 		}
-		else {
+		else { //否则，即没有正确获取categoryId字段
 			outputStream = new ByteArrayInputStream("{result:false}".getBytes());
 		}
 		return "json";
+	}
+	
+	/**
+	 * 编辑某个类别
+	 * @return
+	 * @throws Exception
+	 */
+	public String edtCategory() throws Exception {
+		if(categoryId != null && categoryId.length() > 0){
+			//如果正确获取了categoryId字段
+			Category category = categoryService.getCategoryById(categoryId);
+			if(category != null){
+				//如果找到了对应的类别
+				categoryName = category.getCatName();
+				categoryDescription = category.getCatDescription();
+				return INPUT;
+			}
+			else {
+				return "list";
+			}
+		}
+		else {
+			return "list";
+		}
 	}
 }

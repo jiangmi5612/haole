@@ -11,8 +11,10 @@ public interface IProductmetaDAO {
 	
 	public void updateProductmeta(Productmeta meta);
 	
-	public Productmeta getProductmetaByProductIdAndKey(String productId,String key);
+	public Productmeta getProductmetaById(int id);
 	
-	public List<Productmeta> getProductmetaByProductId(String productId);
+	public Productmeta getProductmetaByProductIdAndKey(int productId,String key);
+	
+	public List<Productmeta> getProductmetaByProductId(int productId);
 
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<table class="listCategory" cellspacing="0" border="0">
+		<table class="listTable" cellspacing="0" border="0">
 			<thead>
 					<tr>
 						<th>序号</th>
@@ -27,10 +27,10 @@
 						<td><s:property value="#category.catName"/></td>
 						<td><s:property value="#category.catDescription" /></td>
 						<td>
-							<s:url id="edtUrl" action="/admin/edtCategory.action">
+							<s:url id="edtUrl" action="edtCategory.action">
 								<s:param name="categoryId"><s:property value="#category.id" /></s:param>
 							</s:url>
-							<s:url id="delUrl" action="/admin/delCategory.action">
+							<s:url id="delUrl" action="delCategory.action">
 								<s:param name="categoryId"><s:property value="#category.id" /></s:param>
 							</s:url>
 							<s:a href="%{edtUrl}">编辑</s:a>

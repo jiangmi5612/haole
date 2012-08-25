@@ -10,4 +10,15 @@
 			<ref bean="categoryServiceProxy"/>
 		</property>
 	</bean>
+	<bean id="productAction" class="action.ProductAction">
+		<property name="productService">
+			<ref bean="productServiceProxy"/>
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryServiceProxy"/>
+		</property>
+		<property name="productmetaService">
+			<ref bean="productmetaServiceProxy"/>
+		</property>
+	</bean>
 </beans>

@@ -79,4 +79,91 @@
 				</props>
 			</property>
 		</bean>
+		
+		<!-- ====================
+		Product相关 ============-->
+		<bean id="productDAO" class="dao.imp.ProductDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="productDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="productDAO"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		<bean id="productService" class="service.imp.ProductService">
+			<property name="productDAO">
+				<ref local="productDAOProxy"/>
+			</property>
+			<property name="categoryDAO">
+				<ref local="categoryDAOProxy"/>
+			</property>
+			<property name="productmetaDAO">
+				<ref local="productmetaDAOProxy"/>
+			</property>
+		</bean>
+		<bean id="productServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="productService"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		
+		<!-- ====================
+		Productmeta相关 ============-->
+		<bean id="productmetaDAO" class="dao.imp.ProductmetaDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="productmetaDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="productmetaDAO"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		<bean id="productmetaService" class="service.imp.ProductmetaService">
+			<property name="productDAO">
+				<ref local="productDAOProxy"/>
+			</property>
+			<property name="productmetaDAO">
+				<ref local="productmetaDAOProxy"/>
+			</property>
+		</bean>
+		<bean id="productmetaServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="productmetaService"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
 </beans>
