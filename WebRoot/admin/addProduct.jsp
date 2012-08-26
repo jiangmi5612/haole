@@ -8,61 +8,20 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="stylesheet" type="text/css" href="ajaxfileupload.css" />
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript" src="ajaxfileupload.js"></script>
-	<script type="text/javascript">
-		function ajaxFileUpload()
-		{
-			$("#loading")
-			.ajaxStart(function(){
-				$(this).show();
-			})
-			.ajaxComplete(function(){
-				$(this).hide();
-			});
-	
-			$.ajaxFileUpload
-			(
-				{
-					url:'http://321haola.sinaapp.com/upload.php?namespace=321haola&dest=test.png&password=.com.cn',
-					secureuri:false,
-					fileElementId:'file',
-					dataType: 'json',
-					data:{name:'logan', id:'id'},
-					success: function (data, status)
-					{
-						if(typeof(data.error) != 'undefined')
-						{
-							if(data.error != '')
-							{
-								alert(data.error);
-							}else
-							{
-								alert(data.msg);
-							}
-						}
-					},
-					error: function (data, status, e)
-					{
-						alert(e);
-					}
-				}
-			)
-			
-			return false;
-	
-		}
+	<script>
+	    // 这个函数将来会被iframe用到
+	    function callUpData(imgurl)
+	    {
+	        alert(result);
+	    }
 	</script>
 	<title>新增产品</title>
 </head>
 <body>
 	<div>
-		<img id="loading" src="loading.gif" style="display:none;">
-		<form action="">
-			<input id="file" type="file" size="45" name="file" class="input">
-			<button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">上传</button>
-		</form>
+		<!-- 构建一个iframe用于上传文件 -->
+		<iframe src="http://321haola.sinaapp.com/upload.html" width="100%" height="100" name="impUp" id="imgUp" frameborder="0"></iframe>
 		<% 
 			Map<String, String> attr = new HashMap<String, String>();
 			attr.put("rows", "30");

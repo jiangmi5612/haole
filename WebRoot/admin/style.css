@@ -20,5 +20,6 @@
 .listTable tbody tr td,.listTable thead tr th{border-top:1px solid #49a1e5;border-left:1px solid #49a1e5;padding:0 0.5em;}
 #addProduct label{display:block;width:80px;text-align:right;float:left;padding:5px 10px;}
 #ckeditor{float:right;width:600px;}
-input[type="submit"],.metro-button{border:2px #e2e2e2 solid;padding:8px 16px;margin:10px 10px 0 10px;color:#fff !important;background:#4ea6ea;cursor:pointer;min-width:95px !important;display:inline-block;position:relative;text-align:center;border-radius:0;}
-input[type="submit"]:hover,.metro-button:hover{background:#3a92d6;}
+button,input[type="submit"],.metro-button{border:2px #e2e2e2 solid;padding:8px 16px;margin:10px 10px 0 10px;color:#fff !important;background:#4ea6ea;cursor:pointer;min-width:95px !important;display:inline-block;position:relative;text-align:center;border-radius:0;}
+button,input[type="submit"]:hover,.metro-button:hover{background:#3a92d6;}
+#loading{position:absolute;top:0;left:0;}
