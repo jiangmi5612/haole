@@ -81,6 +81,7 @@ public class ProductService implements IProductService {
 //		for (Productmeta productmeta : productmetas) {
 //			productmetaDAO.updateProductmeta(productmeta);
 //		}
+		productDAO.updateProduct(product);
 	}
 
 	@Override

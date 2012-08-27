@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" href="../css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet/less" type="text/css" href="style.less" />
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/less-1.3.0.js"></script>
+<link rel="stylesheet" href="../css/zTreeStyle.css" type="text/css">
 <script type="text/javascript" src="../js/jquery.ztree.core-3.3.min.js"></script>
 
 <!-- 用于加载目录树的js代码 -->
@@ -30,6 +31,9 @@
 	           {id:12,pId:1,name:"产品管理",open:true},
 	           {id:121,pId:12,name:"增加产品",url:"renderCatList",target:"adminPages"},
 	           {id:122,pId:12,name:"产品列表",url:"listProduct.action",target:"adminPages"},
+	           {id:13,pId:1,name:"功能块",open:true},
+	           {id:131,pId:13,name:"增加功能块",url:"",target:"adminPages"},
+	           {id:131,pId:13,name:"功能块列表",url:"",target:"adminPages"}
 	           ];
 	
 	$(document).ready(function(){
@@ -45,7 +49,7 @@
 		<div class="main_top">
 			<h1>好乐快速建站系统</h1>
 			<a href="/haole" class="a_left">返回前台</a>
-			<a href="http://www.misins.org" class="a_right">前往信研所&gt;</a>
+			<a href="http://www.misins.org" class="a_right">前往信研所</a>
 		</div>
 		<div class="main_body">
 			<!-- 后台管理主页的左侧用于放置功能目录树 -->
@@ -54,7 +58,7 @@
 			</div>
 			<!-- 后台管理主页的右侧是一个iframe，用于指向特定的功能处理页面 -->
 			<div class="main_right">
-				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight+500"></iframe>
+				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight+600"></iframe>
 			</div>
 			<div class="clear"></div>
 		</div>

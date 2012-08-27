@@ -11,6 +11,8 @@
 //通用类定义
 .clear{
     clear:both;
+    width:100%;
+    height:0px;
 }
 .right{
     float:right;
@@ -19,6 +21,23 @@
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input[type="file"],button,input[type="submit"],.metro-button{
+    border:2px #e2e2e2 solid;
+    padding:6px 12px;
+    margin:5px 5px 0 5px;
+    color:#fff !important;
+    background:@lightBlue;
+    cursor:pointer;
+    min-width:95px !important;
+    display:inline-block;
+    position:relative;
+    text-align:center;
+    border-radius:0;
+    font-weight:bold;
+}
+input[type="file"]:hover,button:hover,input[type="submit"]:hover,.metro-button:hover{
+    background:@lightBlue - 20;
 }
 /*login.jsp*/
 .login_box{
@@ -61,14 +80,18 @@
     }
 }
 .a_left{
-    background:url('../image/left-32.png') no-repeat left center;
-    height:32px;
-    line-height:32px;
-    padding-left:36px;
+    background:url('../image/left-24.png') no-repeat left center;
+    height:24px;
+    line-height:24px;
+    padding-left:28px;
 	float:left;
 }
 .a_right{
-	float:right;
+	background:url('../image/right-24.png') no-repeat right center;
+    height:24px;
+    line-height:24px;
+    padding-right:28px;
+    float:right;
 }
 .main_body{
 	background-color:white;
@@ -116,26 +139,76 @@
 }
 #ckeditor{
     float:right;
-    width:600px;
-}
-button,input[type="submit"],.metro-button{
-    border:2px #e2e2e2 solid;
-    padding:8px 16px;
-    margin:10px 10px 0 10px;
-    color:#fff !important;
-    background:@lightBlue;
-    cursor:pointer;
-    min-width:95px !important;
-    display:inline-block;
-    position:relative;
-    text-align:center;
-    border-radius:0;
-}
-button,input[type="submit"]:hover,.metro-button:hover{
-    background:@lightBlue - 20;
+    width:100%;
 }
 #loading{
     position:absolute;
     top:0;
     left:0;
 }
+@imgFrameWithAndHeight:300px;
+#imgUp{
+    width:@imgFrameWithAndHeight;
+    height:@imgFrameWithAndHeight;
+    float:left;
+    border:none;
+    .shadowBorder;
+    margin-left:5px;
+    margin-top:5px;
+}
+#productBasicInfo{
+    margin-top:5px;
+    tr{
+        height:24px;
+        line-height:24px;
+        }
+    select,input,textarea{
+        margin-top:6px;
+        }
+}
+#productDetail{
+
+    }
+/*远端upload.html*/
+#imgSelect{
+    width:@imgFrameWithAndHeight;
+    height:@imgFrameWithAndHeight;
+    input{
+        width:@imgFrameWithAndHeight / 2;
+        position:absolute;
+        bottom:5px;
+        left:0px;
+        height:19px;
+        overflow:hidden;
+    }
+    button{
+        position:absolute;
+        right:0px;
+        bottom:5px;
+    }
+}
+/*showpic.html*/
+#img{
+    width:@imgFrameWithAndHeight;
+    height:@imgFrameWithAndHeight;
+    padding:3px;
+    img{
+        width:@imgFrameWithAndHeight - 6;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
