@@ -28,7 +28,7 @@
 			attr.put("height","500px");
 			//CKEditor的功能项配置
 			CKEditorConfig settings = new CKEditorConfig();
-			settings.addConfigValue("toolbar","["
+			settings.addConfigValue("toolbar","[{name: 'document', items: ['Source', '-', 'NewPage']},"
 						+"{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },"
 						+"{ name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },"
 						+"{ name: 'insert', items : [ 'Image','Table','HorizontalRule','Smiley','SpecialChar' ] },"

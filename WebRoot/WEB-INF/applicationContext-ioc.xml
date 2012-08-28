@@ -166,4 +166,43 @@
 				</props>
 			</property>
 		</bean>
+		
+				<!-- ====================
+		Block相关 ============-->
+		<bean id="blockDAO" class="dao.imp.BlockDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="blockDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="blockDAO"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
+		<bean id="blockService" class="service.imp.BlockService">
+			<property name="blockDAO">
+				<ref local="blockDAOProxy"/>
+			</property>
+		</bean>
+		<bean id="blockServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+			<property name="transactionManager">
+				<ref bean="transactionManager"/>
+			</property>
+			<property name="target">
+				<ref local="blockService"/>
+			</property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+				</props>
+			</property>
+		</bean>
 </beans>

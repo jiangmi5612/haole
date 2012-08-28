@@ -36,7 +36,7 @@ public class Admin extends ActionSupport {
 	private String password;
 	
 	//获取表单或链接中类别的id
-	private String categoryId;
+	private int categoryId;
 	
 	//获取表单中的类别名称
 	private String categoryName;
@@ -141,7 +141,7 @@ public class Admin extends ActionSupport {
 	/**
 	 * @return the categoryId
 	 */
-	public String getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
 
@@ -150,7 +150,7 @@ public class Admin extends ActionSupport {
 	/**
 	 * @param categoryId the categoryId to set
 	 */
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -230,7 +230,7 @@ public class Admin extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String addCategory() throws Exception{
-		if(categoryId != null && categoryId.length() > 0){
+		if(categoryId  > 0){
 			//如果传来的变量中有categoryId字段，则执行更新操作
 			Category category = categoryService.getCategoryById(categoryId);
 			category.setCatName(categoryName);
@@ -246,7 +246,7 @@ public class Admin extends ActionSupport {
 				category.setCatDescription(categoryDescription);
 				categoryService.addCategory(category);
 				//如果成功存入数据库
-				if(category.getId()!=null){
+				if(category.getId()>0){
 					//清空界面元素
 					categoryName = null;
 					categoryDescription = null;
@@ -280,7 +280,7 @@ public class Admin extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String delCategory() throws Exception {
-		if(categoryId != null && categoryId.length()>0){
+		if(categoryId >0){
 			//首先查询该类别是否存在
 			Category category = categoryService.getCategoryById(categoryId);
 			if(category != null){
@@ -304,7 +304,7 @@ public class Admin extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String edtCategory() throws Exception {
-		if(categoryId != null && categoryId.length() > 0){
+		if(categoryId  > 0){
 			//如果正确获取了categoryId字段
 			Category category = categoryService.getCategoryById(categoryId);
 			if(category != null){

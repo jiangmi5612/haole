@@ -31,7 +31,7 @@ public class Category {
 	}
 
 	//类别ID
-	private String id;
+	private int id;
 	
 	//类别名称
 	private String catName;
@@ -43,12 +43,12 @@ public class Category {
 	private Set<Product> products;
 
 	//获取类别ID
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	//设置类别ID，改为protected，由Hibernate负责自动设置
-	protected void setId(String id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 
@@ -91,19 +91,18 @@ public class Category {
 				+ getCatName() + "]";
 	}
 
-	/* 生成哈希码，以便在Set中排序、查找
+	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((catName == null) ? 0 : catName.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
-	/* 判断对象相等
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -115,17 +114,11 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		if (catName == null) {
-			if (other.catName != null)
-				return false;
-		} else if (!catName.equals(other.catName))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		return true;
 	}
+
+
 	
 }

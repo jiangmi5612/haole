@@ -52,11 +52,4 @@
 			<ref local="sessionFactory"/>
 		</property>
 	</bean>
-	
-	<!-- 配置前台Action相关的bean -->
-	<bean id="qCategory" class="action.QCategory">
-		<property name="categoryService">
-			<ref bean="categoryServiceProxy"/>
-		</property>
-	</bean>
 </beans>

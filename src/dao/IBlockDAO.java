@@ -5,13 +5,31 @@ import java.util.List;
 import domain.Block;
 
 public interface IBlockDAO {
+	
 	public void addBlock(Block block);
 	
 	public void deleteBlock(Block block);
 	
 	public void updateBlock(Block block);
 	
-	public Block getBlockById(String id);
+	public Block getBlockById(int id);
 	
-	public List<Block> getAllBlock();
+	public void deleteBlockById(int id);
+	
+	/**
+	 * 取出具有分页的功能块
+	 * @param itemsPerPage
+	 * @param pageNo
+	 * @return
+	 */
+	public List<Block> getBlockByBlockTypeWithPage(String blockType,int itemsPerPage,int pageNo);
+	
+	/**
+	 * 取出固定数量的功能块
+	 * @param amount
+	 * @return
+	 */
+	public List<Block> getBlockByBlockTypeWithAmount(String blockType,int amount);
+	
+	public List<String> getBlockType();
 }

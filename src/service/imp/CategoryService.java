@@ -33,7 +33,7 @@ public class CategoryService implements ICategoryService {
 		//进行简单的合法性验证
 		if(category == null)
 			return;
-		if(category.getId() != null)
+		if(category.getId() > 0)
 			return;
 		categoryDAO.addCategory(category);
 	}
@@ -41,7 +41,7 @@ public class CategoryService implements ICategoryService {
 	public void deleteCategory(Category category) {
 		if(category == null)
 			return;
-		if(category.getId() == null)
+		if(category.getId() <= 0)
 			return;
 		categoryDAO.deleteCategory(category);
 		
@@ -50,14 +50,14 @@ public class CategoryService implements ICategoryService {
 	public void updateCategory(Category category) {
 		if(category == null)
 			return;
-		if(category.getId() == null)
+		if(category.getId() <= 0)
 			return;
 		categoryDAO.updateCategory(category);
 		
 	}
 
-	public Category getCategoryById(String id) {
-		if(id == null || id.length()==0)
+	public Category getCategoryById(int id) {
+		if(id <= 0)
 			return null;
 		else {
 			return categoryDAO.getCategoryById(id);

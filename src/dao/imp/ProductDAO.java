@@ -74,7 +74,10 @@ public class ProductDAO implements IProductDAO {
 
 	@Override
 	public void deleteProductById(int id) {
-		
+		String hql = "DELETE Product WHERE id=:id";
+		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger("id", id);
+		query.executeUpdate();
 	}
 
 }

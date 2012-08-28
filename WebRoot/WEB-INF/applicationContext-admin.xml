@@ -21,4 +21,9 @@
 			<ref bean="productmetaServiceProxy"/>
 		</property>
 	</bean>
+	<bean id="blockAction" class="action.BlockAction">
+		<property name="blockService">
+			<ref bean="blockServiceProxy"/>
+		</property>
+	</bean>
 </beans>

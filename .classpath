@@ -13,12 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Struts"/>
-	<classpathentry kind="lib" path="E:/专业相关/JSP/mysql-connector-java-5.1.21-bin.jar"/>
-	<classpathentry kind="lib" path="E:/专业相关/JSP/Hibernate/lib/optional/ehcache/ehcache-core-2.4.3.jar"/>
-	<classpathentry kind="lib" path="E:/专业相关/JSP/Hibernate/lib/optional/ehcache/hibernate-ehcache-4.1.6.Final.jar"/>
-	<classpathentry kind="lib" path="E:/专业相关/JSP/Hibernate/lib/optional/ehcache/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="output" path="com.321haole/WebRoot/WEB-INF/classes"/>
 </classpath>

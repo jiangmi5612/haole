@@ -18,7 +18,7 @@ public interface IProductService {
 	
 	public void updateProduct(int id,String productName, String productDescription,
 			float marketPrice, float productPrice, String productFeature,
-			String productInfo, String categoryId, int browseTimes,String img);
+			String productInfo, int categoryId, int browseTimes,String img);
 	
 	public Product getProductById(int id);
 	

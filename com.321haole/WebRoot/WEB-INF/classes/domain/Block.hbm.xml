@@ -4,8 +4,8 @@
                 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" > 
 <hibernate-mapping>
 	<class name="domain.Block" table="block">
-		<id name="id" length="32" column="id" type="java.lang.String">
-			<generator class="uuid.hex"></generator>
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="native"></generator>
 		</id>
 		<property name="blockType" type="java.lang.String" column="blockType" length="32"/>
 		<property name="blockName" type="java.lang.String" column="blockName" length="32" not-null="false" />

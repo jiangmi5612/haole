@@ -34,14 +34,14 @@ public class Block {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	protected void setId(String id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 
@@ -114,7 +114,7 @@ public class Block {
 	}
 
 	//代码段编号
-	private String id;
+	private int id;
 	
 	//代码类别，自定义字符串，用来扩展功能，如新闻列表、简单评论等
 	private String blockType;

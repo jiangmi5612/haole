@@ -34,13 +34,13 @@ public class ProductAction extends ActionSupport {
 		}
 		else {
 			Category category = categoryService.getCategoryById(categoryId);
-			if(category != null && category.getId().length() > 0){
+			if(category != null && category.getId() > 0){
 				//如果成功查询到该类别
 				productService.addProduct(productName, productDescription, marketPrice, productPrice, productFeature, productInfo, category, browseTimes,img);
 				this.productId = 0;
 				this.productName = null;
 				this.productDescription = null;
-				this.categoryId = null;
+				this.categoryId = 0;
 				this.marketPrice = 0;
 				this.productPrice = 0;
 				this.productFeature = null;
@@ -116,7 +116,7 @@ public class ProductAction extends ActionSupport {
 	}
 
 	//接收产品类别id
-	private String categoryId;
+	private int categoryId;
 	
 	//接收产品名称
 	private String productName;
@@ -157,14 +157,14 @@ public class ProductAction extends ActionSupport {
 	/**
 	 * @return the categoryId
 	 */
-	public String getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
 
 	/**
 	 * @param categoryId the categoryId to set
 	 */
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 

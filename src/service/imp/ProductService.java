@@ -54,16 +54,17 @@ public class ProductService implements IProductService {
 
 	@Override
 	public void deleteProduct(int id) {
-		Product product = productDAO.getProductById(id);
-		if(product != null && product.getId() > 0){
-			productDAO.deleteProduct(product);
-		}
+//		Product product = productDAO.getProductById(id);
+//		if(product != null && product.getId() > 0){
+//			productDAO.deleteProduct(product);
+//		}
+		productDAO.deleteProductById(id);
 	}
 
 	@Override
 	public void updateProduct(int id,String productName, String productDescription,
 			float marketPrice, float productPrice, String productFeature,
-			String productInfo, String categoryId, int browseTimes,String img) {
+			String productInfo, int categoryId, int browseTimes,String img) {
 		Product product = productDAO.getProductById(id);
 		product.setProductName(productName);
 		product.setProductDescription(productDescription);

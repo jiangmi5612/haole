@@ -38,7 +38,7 @@ public class CategoryDAO implements ICategoryDAO {
 		
 	}
 
-	public Category getCategoryById(String id) {
+	public Category getCategoryById(int id) {
 		return (Category)this.sessionFactory.getCurrentSession().get(Category.class, id);
 	}
 
