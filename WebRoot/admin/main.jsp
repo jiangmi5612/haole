@@ -33,7 +33,7 @@
 	           {id:122,pId:12,name:"产品列表",url:"listProduct.action",target:"adminPages"},
 	           {id:13,pId:1,name:"功能块",open:true},
 	           {id:131,pId:13,name:"增加功能块",url:"renderBlockTypeList",target:"adminPages"},
-	           {id:131,pId:13,name:"功能块列表",url:"",target:"adminPages"}
+	           {id:131,pId:13,name:"功能块列表",url:"listBlock",target:"adminPages"}
 	           ];
 	
 	$(document).ready(function(){

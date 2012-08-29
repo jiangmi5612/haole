@@ -28,7 +28,7 @@
 			settings.addConfigValue("height","500");
 		%>
 	<s:form action="edtBlock" method="post">
-		<s:hidden name="block.id"></s:hidden>
+		<s:hidden name="blockId"></s:hidden>
 		<s:if test="%{listBlockType.size>0}">
 			<s:combobox label="功能块类型" list="listBlockType" name="block.blockType" headerKey="-1" headerValue="----可选择----"  emptyOption="true"></s:combobox>
 		</s:if>

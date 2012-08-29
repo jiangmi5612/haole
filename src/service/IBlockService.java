@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import commons.PageInfo;
+
 import domain.Block;
 
 public interface IBlockService {
@@ -15,7 +17,7 @@ public interface IBlockService {
 	
 	public Block getBlockById(int id);
 	
-	public List<Block> getBlockByBlockTypeWithPage(String blockType, int itemsPerPage, int pageNo);
+	public PageInfo getBlockByBlockTypeWithPage(String blockType, int itemsPerPage, int pageNo);
 	
 	public List<Block> getBlockByBlockTypeWithAmount(String blockType, int amount);
 	

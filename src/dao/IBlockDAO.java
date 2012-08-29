@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import commons.PageInfo;
+
 import domain.Block;
 
 public interface IBlockDAO {
@@ -22,7 +24,7 @@ public interface IBlockDAO {
 	 * @param pageNo
 	 * @return
 	 */
-	public List<Block> getBlockByBlockTypeWithPage(String blockType,int itemsPerPage,int pageNo);
+	public PageInfo getBlockByBlockTypeWithPage(String blockType,int itemsPerPage,int pageNo);
 	
 	/**
 	 * 取出固定数量的功能块

@@ -2,6 +2,8 @@ package service.imp;
 
 import java.util.List;
 
+import commons.PageInfo;
+
 import dao.IBlockDAO;
 import dao.imp.BlockDAO;
 import domain.Block;
@@ -40,7 +42,7 @@ public class BlockService implements IBlockService {
 	}
 
 	@Override
-	public List<Block> getBlockByBlockTypeWithPage(String blockType, int itemsPerPage,
+	public PageInfo getBlockByBlockTypeWithPage(String blockType, int itemsPerPage,
 			int pageNo) {
 		return blockDAO.getBlockByBlockTypeWithPage(blockType, itemsPerPage, pageNo);
 		

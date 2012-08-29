@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
+import commons.PageInfo;
+
 import dao.IBlockDAO;
 import domain.Block;
 
@@ -42,14 +44,18 @@ public class BlockDAO implements IBlockDAO {
 	}
 
 	@Override
-	public List<Block> getBlockByBlockTypeWithPage(String blockType,
+	public PageInfo getBlockByBlockTypeWithPage(String blockType,
 			int itemsPerPage, int pageNo) {
-		String hql = "FROM Block WHERE blockType=:blockType ORDER BY id DESC";
+		//构建两个查询，然后传给分页组件
+		String hql = "SELECT COUNT(b.id) FROM Block b WHERE blockType=:blockType";
+		Query queryCount = this.sessionFactory.getCurrentSession().createQuery(hql);
+		queryCount.setString("blockType", blockType);
+		
+		hql = "FROM Block WHERE blockType=:blockType ORDER BY id DESC";
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("blockType", blockType);
-		query.setFirstResult((pageNo - 1) * itemsPerPage);
-		query.setMaxResults(itemsPerPage);
-		return (List<Block>)query.list();
+		
+		return new PageInfo(queryCount, query, pageNo, itemsPerPage);
 	}
 
 	@Override
