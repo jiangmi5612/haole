@@ -1,10 +1,8 @@
 package service.imp;
 
 import java.util.List;
-import java.util.Set;
 
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
+import commons.PageInfo;
 
 import dao.ICategoryDAO;
 import dao.IProductDAO;
@@ -96,28 +94,22 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public List<Product> getProductByCatId(String catId) {
-		if(catId != null && catId.length() > 0){
-			return productDAO.getProductByCatId(catId);
-		}
-		else {
-			return null;
-		}
+	public PageInfo getProductByCatIdWithPage(int categoryId, int pageSize,
+			int page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public List<Product> getProductByProductName(String productName) {
-		if(productName != null && productName.length() > 0){
-			return productDAO.getProductByProductName(productName);
-		}
-		else {
-			return  null;
-		}
+	public PageInfo getProductByProductNameWithPage(String productName,
+			int pageSize, int page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public List<Product> getProductWithPage(int itemsPerPage, int pageNo) {
-		return productDAO.getProductWithPage(itemsPerPage, pageNo);
+	public PageInfo getProductWithPage(int pageSize, int page) {
+		return productDAO.getProductWithPage(pageSize, page);
 	}
 	
 }

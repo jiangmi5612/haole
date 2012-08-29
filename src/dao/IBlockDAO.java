@@ -26,6 +26,8 @@ public interface IBlockDAO {
 	 */
 	public PageInfo getBlockByBlockTypeWithPage(String blockType,int itemsPerPage,int pageNo);
 	
+	public PageInfo getAllBlockWithPage(int pageSize,int page);
+	
 	/**
 	 * 取出固定数量的功能块
 	 * @param amount

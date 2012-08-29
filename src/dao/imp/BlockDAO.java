@@ -57,6 +57,17 @@ public class BlockDAO implements IBlockDAO {
 		
 		return new PageInfo(queryCount, query, pageNo, itemsPerPage);
 	}
+	
+	@Override
+	public PageInfo getAllBlockWithPage(int pageSize,int page){
+		String hql = "SELECT COUNT(b.id) FROM Block b";
+		Query queryCount = this.sessionFactory.getCurrentSession().createQuery(hql);
+		
+		hql = "FROM Block ORDER BY id DESC";
+		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
+		
+		return new PageInfo(queryCount, query, page, pageSize);
+	}
 
 	@Override
 	public List<Block> getBlockByBlockTypeWithAmount(String blockType,

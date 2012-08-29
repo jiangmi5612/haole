@@ -7,6 +7,7 @@ import service.IProductService;
 import service.IProductmetaService;
 
 import com.opensymphony.xwork2.ActionSupport;
+import commons.PageInfo;
 
 import domain.Category;
 import domain.Product;
@@ -26,6 +27,10 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 新增产品页
+	 * @return
+	 */
 	public String addProduct() {
 		//判断是新增还是编辑
 		if(productId > 0){
@@ -35,28 +40,22 @@ public class ProductAction extends ActionSupport {
 		else {
 			Category category = categoryService.getCategoryById(categoryId);
 			if(category != null && category.getId() > 0){
-				//如果成功查询到该类别
+				//如果成功查询到对应类别，则新增该产品
 				productService.addProduct(productName, productDescription, marketPrice, productPrice, productFeature, productInfo, category, browseTimes,img);
-				this.productId = 0;
-				this.productName = null;
-				this.productDescription = null;
-				this.categoryId = 0;
-				this.marketPrice = 0;
-				this.productPrice = 0;
-				this.productFeature = null;
-				this.productInfo = null;
-				this.browseTimes = 0;
-				this.img = null;
 			}
 			return INPUT;
 		}
 	}
 	
+	/**
+	 * 列出产品页
+	 * @return
+	 */
 	public String listProduct() {
 		//TODO:优化为只输出选定的列
 		//产品完整介绍会很大，无谓地占用了空间，降低了效率
-		if(pageNo < 1) pageNo = 1;
-		listProduct = productService.getProductWithPage(itemsPerPage, pageNo);
+		pageInfo = productService.getProductWithPage(10, pageNo);
+		pageInfo.setListPage("listProduct?pageNo=");
 		return "list";
 	}
 	
@@ -153,6 +152,9 @@ public class ProductAction extends ActionSupport {
 	
 	//映射产品列表
 	private List<Product> listProduct;
+	
+	//映射分页信息类
+	private PageInfo pageInfo;
 
 	/**
 	 * @return the categoryId
@@ -320,6 +322,13 @@ public class ProductAction extends ActionSupport {
 	 */
 	public List<Product> getListProduct() {
 		return listProduct;
+	}
+
+	/**
+	 * @return the pageInfo
+	 */
+	public PageInfo getPageInfo() {
+		return pageInfo;
 	}
 	
 	

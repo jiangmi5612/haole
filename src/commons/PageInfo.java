@@ -17,8 +17,10 @@ public class PageInfo {
 	private boolean hasPreviousPage;	//是否有前一页
 	private boolean hasNextPage;		//是否有后一页
 	
+	private String listPage;	//用于展示页面的链接地址，截止到pageNo=，例如listProduct?pageNo=
+	
 	/**
-	 * 构造函数
+	 * 独立构造函数
 	 * @param allRow 总记录数
 	 * @param pageSize 每页记录数
 	 * TODO: 如果以后基本用不到的话，可以考虑删除
@@ -30,7 +32,7 @@ public class PageInfo {
 	}
 	
 	/**
-	 * 
+	 * 与Hibernate深度耦合的构造函数
 	 * @param allRowQuery 用于统计总行数的查询
 	 * @param listQuery 用于获取数据的查询
 	 * @param currentPage 需要获取的页码
@@ -38,6 +40,7 @@ public class PageInfo {
 	 */
 	public PageInfo(Query allRowQuery, Query listQuery,int currentPage, int pageSize){
 		this.allRow = Integer.parseInt(allRowQuery.uniqueResult().toString());
+		this.currentPage = currentPage > 0? currentPage:1;
 		this.pageSize = pageSize;
 		this.totalPage = allRow % pageSize == 0 ? allRow / pageSize : allRow / pageSize + 1;
 		listQuery.setFirstResult(getOffSet());
@@ -156,6 +159,20 @@ public class PageInfo {
 	 */
 	public boolean isHasNextPage() {
 		return currentPage != totalPage;
+	}
+
+	/**
+	 * @return the listPage
+	 */
+	public String getListPage() {
+		return listPage;
+	}
+
+	/**
+	 * @param listPage the listPage to set
+	 */
+	public void setListPage(String listPage) {
+		this.listPage = listPage;
 	}
 	
 }

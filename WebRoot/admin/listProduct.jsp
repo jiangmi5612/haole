@@ -13,12 +13,13 @@
 <body>
 	<div>
 		<!-- 表现方式二 -->
-		<s:iterator value="%{listProduct}" id="product" status="st">
+		<s:iterator value="%{pageInfo.list}" id="product" status="st">
 			<div class="list_item">
 				<span class="list_item_img">
-					<img alt="${product.productName}" src="${product.img}">
+					<img alt="${product.productName}" src="${product.productImg}">
 				</span>
 				<span class="list_item_title"><s:property value="#product.productName"/></span>
+				<span class="list_item_category"><s:property value="#product.categoryName"/></span>
 				<span class="list_item_description"><s:property value="#product.productDescription"/></span>
 				<span class="list_item_detail">
 					价格：<s:property value="#product.productPrice"/>&nbsp;
@@ -36,12 +37,7 @@
 				</span>
 			</div>
 		</s:iterator>
-		<ul>
-			<li>
-				<s:a href="listProduct.action?pageNo=%{pageNo-1}">上一页</s:a>
-				<s:a href="listProduct.action?pageNo=%{pageNo+1}">下一页</s:a>
-			</li>
-		</ul>
+		<s:include value="pageNav.jsp"></s:include>
 	</div>
 </body>
 </html>

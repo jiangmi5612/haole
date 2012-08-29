@@ -44,6 +44,7 @@
 					</s:iterator>
 				</tbody>
 			</table>
+			<s:include value="pageNav.jsp"></s:include>
 		</s:if>
 		<s:else>
 			<p>目前系统中还没有功能块，请添加。</p>

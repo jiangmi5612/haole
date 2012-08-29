@@ -37,7 +37,8 @@ public class BlockAction extends ActionSupport {
 	}
 	
 	public String listBlock() {
-		pageInfo = blockService.getBlockByBlockTypeWithPage("新闻", 5, 1);
+		pageInfo = blockService.getAllBlockWithPage(20, pageNo );
+		pageInfo.setListPage("listBlock?pageNo=");
 		listBlock = (List<Block>)pageInfo.getList();
 		return "list";
 	}
@@ -64,6 +65,9 @@ public class BlockAction extends ActionSupport {
 	
 	//映射分页信息
 	private PageInfo pageInfo;
+	
+	//映射页码
+	private int pageNo;
 
 	/**
 	 * @return the blockId
@@ -112,6 +116,20 @@ public class BlockAction extends ActionSupport {
 	 */
 	public PageInfo getPageInfo() {
 		return pageInfo;
+	}
+
+	/**
+	 * @return the pageNo
+	 */
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	/**
+	 * @param pageNo the pageNo to set
+	 */
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 	
 	

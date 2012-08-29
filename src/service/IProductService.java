@@ -3,6 +3,8 @@ package service;
 import java.util.List;
 import java.util.Set;
 
+import commons.PageInfo;
+
 import dao.IProductDAO;
 import domain.Category;
 import domain.Product;
@@ -22,10 +24,10 @@ public interface IProductService {
 	
 	public Product getProductById(int id);
 	
-	public List<Product> getProductByCatId(String catId);
+	public PageInfo getProductByCatIdWithPage(int categoryId, int pageSize, int page);
 	
-	public List<Product> getProductByProductName(String productName);
+	public PageInfo getProductByProductNameWithPage(String productName,int pageSize, int page);
 	
-	public List<Product> getProductWithPage(int itemsPerPage, int pageNo);
+	public PageInfo getProductWithPage(int pageSize,int page);
 	
 }

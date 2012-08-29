@@ -5,6 +5,10 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+
+import commons.PageInfo;
+
 import domain.Product;
 
 /**
@@ -22,12 +26,9 @@ public interface IProductDAO {
 	
 	public Product getProductById(int id);
 	
-	//按照类别id获取产品
-	public List<Product> getProductByCatId(String catId);
+	public PageInfo getProductByCatIdWithPage(int categoryId, int pageSize, int page);
 	
-	public List<Product> getProductByProductName(String productName);
+	public PageInfo getProductByProductNameWithPage(String productName,int pageSize, int page);
 	
-	public List<Product> getProductWithPage(int itemsPerPage,int pageNo);
-	
-	public List<Product> getAllProduct();
+	public PageInfo getProductWithPage(int pageSize,int page);
 }
