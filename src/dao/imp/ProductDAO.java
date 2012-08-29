@@ -88,7 +88,7 @@ public class ProductDAO implements IProductDAO {
 		listQuery.setInteger("categoryId", categoryId);
 		
 		//获取分页信息并返回
-		return new PageInfo(countQuery, listQuery, page, pageSize);
+		return new PageInfo(countQuery, listQuery, pageSize, page);
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class ProductDAO implements IProductDAO {
 		listQuery.setString("productName", productName);
 		
 		//获取分页信息并返回
-		return new PageInfo(countQuery, listQuery, page, pageSize);
+		return new PageInfo(countQuery, listQuery, pageSize, page);
 	}
 	
 	/**
@@ -127,7 +127,7 @@ public class ProductDAO implements IProductDAO {
 		Query listQuery = this.sessionFactory.getCurrentSession().createQuery(hsql);
 		
 		//获取分页信息并返回
-		return new PageInfo(countQuery, listQuery, page, pageSize);
+		return new PageInfo(countQuery, listQuery, pageSize, page);
 	}
 
 

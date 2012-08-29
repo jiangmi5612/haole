@@ -55,7 +55,7 @@
 			String password = DigestUtils.md5Hex(rdm+key);
 		%>
 		<!-- 构建一个iframe用于上传文件 -->
-		<iframe id="imgUp" src="http://pysaeimg.sinaapp.com/?rdm=<%=rdm %>&password=<%=password %>"></iframe>
+		<iframe id="imgUp" src="http://pysaeimg.sinaapp.com/?rdm=<%=rdm %>&password=<%=password %>" frameborder="0"></iframe>
 		<s:form action="addProduct" method="post" theme="simple">
 		<table cellspacing="0" border="0" id="productBasicInfo">
 			<tr>

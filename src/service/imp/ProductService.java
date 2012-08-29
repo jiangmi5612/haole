@@ -51,11 +51,7 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public void deleteProduct(int id) {
-//		Product product = productDAO.getProductById(id);
-//		if(product != null && product.getId() > 0){
-//			productDAO.deleteProduct(product);
-//		}
+	public void deleteProductById(int id) {
 		productDAO.deleteProductById(id);
 	}
 
@@ -75,11 +71,7 @@ public class ProductService implements IProductService {
 		product.setCategory(category);
 		product.setBrowseTimes(browseTimes);
 		product.setImg(img);
-		
-		//分别更新相关的Productmeta
-//		for (Productmeta productmeta : productmetas) {
-//			productmetaDAO.updateProductmeta(productmeta);
-//		}
+
 		productDAO.updateProduct(product);
 	}
 
@@ -96,15 +88,13 @@ public class ProductService implements IProductService {
 	@Override
 	public PageInfo getProductByCatIdWithPage(int categoryId, int pageSize,
 			int page) {
-		// TODO Auto-generated method stub
-		return null;
+		return productDAO.getProductByCatIdWithPage(categoryId, pageSize, page);
 	}
 
 	@Override
 	public PageInfo getProductByProductNameWithPage(String productName,
 			int pageSize, int page) {
-		// TODO Auto-generated method stub
-		return null;
+		return productDAO.getProductByProductNameWithPage(productName, pageSize, page);
 	}
 
 	@Override

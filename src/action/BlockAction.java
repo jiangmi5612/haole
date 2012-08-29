@@ -19,7 +19,7 @@ public class BlockAction extends ActionSupport {
 		return INPUT;
 	}
 	
-	public String edtBlock() {
+	public String addBlock() {
 		if(blockId > 0){
 			//如果已经有id，则表示为编辑模式
 			Block originalBlock = blockService.getBlockById(blockId);
@@ -39,9 +39,25 @@ public class BlockAction extends ActionSupport {
 	public String listBlock() {
 		pageInfo = blockService.getAllBlockWithPage(20, pageNo );
 		pageInfo.setListPage("listBlock?pageNo=");
-		listBlock = (List<Block>)pageInfo.getList();
 		return "list";
 	}
+	
+	public String edtBlock() {
+		if(blockId > 0){
+			block = blockService.getBlockById(blockId);
+			return INPUT;
+		}
+		return "list";
+	}
+	
+	public String delBlock() {
+		if(blockId > 0){
+			blockService.deleteBlockById(blockId);
+		}
+		return "relist";
+	}
+	
+	
 	private IBlockService blockService;
 
 	/**
@@ -61,7 +77,7 @@ public class BlockAction extends ActionSupport {
 	private List<String> listBlockType;
 	
 	//映射功能块列表
-	private List<Block> listBlock;
+//	private List<Block> listBlock;
 	
 	//映射分页信息
 	private PageInfo pageInfo;
@@ -104,12 +120,12 @@ public class BlockAction extends ActionSupport {
 		return listBlockType;
 	}
 
-	/**
-	 * @return the listBlock
-	 */
-	public List<Block> getListBlock() {
-		return listBlock;
-	}
+//	/**
+//	 * @return the listBlock
+//	 */
+//	public List<Block> getListBlock() {
+//		return listBlock;
+//	}
 
 	/**
 	 * @return the pageInfo

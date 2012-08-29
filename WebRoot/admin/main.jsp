@@ -58,7 +58,7 @@
 			</div>
 			<!-- 后台管理主页的右侧是一个iframe，用于指向特定的功能处理页面 -->
 			<div class="main_right">
-				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight+600"></iframe>
+				<iframe id="adminPages" name="adminPages" class="adminPages" onload="this.height=0;this.height=adminPages.document.body.scrollHeight+600" frameborder="0"></iframe>
 			</div>
 			<div class="clear"></div>
 		</div>

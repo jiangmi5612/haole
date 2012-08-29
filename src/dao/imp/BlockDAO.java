@@ -45,7 +45,7 @@ public class BlockDAO implements IBlockDAO {
 
 	@Override
 	public PageInfo getBlockByBlockTypeWithPage(String blockType,
-			int itemsPerPage, int pageNo) {
+			int pageSize, int page) {
 		//构建两个查询，然后传给分页组件
 		String hql = "SELECT COUNT(b.id) FROM Block b WHERE blockType=:blockType";
 		Query queryCount = this.sessionFactory.getCurrentSession().createQuery(hql);
@@ -55,7 +55,7 @@ public class BlockDAO implements IBlockDAO {
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("blockType", blockType);
 		
-		return new PageInfo(queryCount, query, pageNo, itemsPerPage);
+		return new PageInfo(queryCount, query, pageSize, page);
 	}
 	
 	@Override
@@ -63,20 +63,10 @@ public class BlockDAO implements IBlockDAO {
 		String hql = "SELECT COUNT(b.id) FROM Block b";
 		Query queryCount = this.sessionFactory.getCurrentSession().createQuery(hql);
 		
-		hql = "FROM Block ORDER BY id DESC";
+		hql = "SELECT new BlockRow(b.id,b.blockType,b.blockName,b.blockDescription) FROM Block b ORDER BY b.id DESC";
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		
-		return new PageInfo(queryCount, query, page, pageSize);
-	}
-
-	@Override
-	public List<Block> getBlockByBlockTypeWithAmount(String blockType,
-			int amount) {
-		String hql = "FROM Block WHERE blockType=:blockType ORDER BY id DESC";
-		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString("blockType", blockType);
-		query.setMaxResults(amount);
-		return (List<Block>)query.list();
+		return new PageInfo(queryCount, query, pageSize, page);
 	}
 	
 	private SessionFactory sessionFactory;

@@ -14,8 +14,6 @@ public class PageInfo {
 	
 	private boolean isFirstPage;	//是否为第一页
 	private boolean isLastPage;	//是否为最后一页
-	private boolean hasPreviousPage;	//是否有前一页
-	private boolean hasNextPage;		//是否有后一页
 	
 	private String listPage;	//用于展示页面的链接地址，截止到pageNo=，例如listProduct?pageNo=
 	
@@ -23,24 +21,25 @@ public class PageInfo {
 	 * 独立构造函数
 	 * @param allRow 总记录数
 	 * @param pageSize 每页记录数
-	 * TODO: 如果以后基本用不到的话，可以考虑删除
 	 */
-	public PageInfo(int allRow, int pageSize){
+	public PageInfo(int allRow, int pageSize, int page){
 		this.allRow = allRow;
 		this.pageSize = pageSize;
+		this.currentPage = page > 0? page:1;
 		this.totalPage = allRow % pageSize == 0 ? allRow / pageSize : allRow / pageSize + 1;
+		refreshInfo();
 	}
 	
 	/**
-	 * 与Hibernate深度耦合的构造函数
-	 * @param allRowQuery 用于统计总行数的查询
+	 * 与Hibernate耦合的构造函数
+	 * @param countQuery 用于统计总行数的查询
 	 * @param listQuery 用于获取数据的查询
 	 * @param currentPage 需要获取的页码
 	 * @param pageSize 每页记录数
 	 */
-	public PageInfo(Query allRowQuery, Query listQuery,int currentPage, int pageSize){
-		this.allRow = Integer.parseInt(allRowQuery.uniqueResult().toString());
-		this.currentPage = currentPage > 0? currentPage:1;
+	public PageInfo(Query countQuery, Query listQuery,int pageSize, int page){
+		this.allRow = Integer.parseInt(countQuery.uniqueResult().toString());
+		this.currentPage = page > 0? page:1;
 		this.pageSize = pageSize;
 		this.totalPage = allRow % pageSize == 0 ? allRow / pageSize : allRow / pageSize + 1;
 		listQuery.setFirstResult(getOffSet());
@@ -56,8 +55,6 @@ public class PageInfo {
 	public void refreshInfo() {
 		this.isFirstPage = isFirstPage();
 		this.isLastPage = isLastPage();
-		this.hasPreviousPage = isHasPreviousPage();
-		this.hasNextPage = isHasNextPage();
 	}
 	
 	/**
@@ -146,20 +143,6 @@ public class PageInfo {
 		return currentPage == totalPage;
 	}
 	/**
-
-	/**
-	 * @return the hasPreviousPage
-	 */
-	public boolean isHasPreviousPage() {
-		return currentPage != 1;
-	}
-
-	/**
-	 * @return the hasNextPage
-	 */
-	public boolean isHasNextPage() {
-		return currentPage != totalPage;
-	}
 
 	/**
 	 * @return the listPage

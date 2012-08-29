@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div>
-		<s:if test="%{listBlock.size() > 0}">
+		<s:if test="%{pageInfo.list.size() > 0}">
 			<table class="listTable" cellspacing="0" border="0">
 				<thead>
 					<tr>
@@ -24,7 +24,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<s:iterator value="%{listBlock}" id="block"	status="st">
+					<s:iterator value="%{pageInfo.list}" id="block"	status="st">
 						<tr>
 							<td><s:property value="#block.id"/></td>
 							<td><s:property value="#block.blockType"/></td>

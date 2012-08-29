@@ -27,7 +27,7 @@
 					+"]");
 			settings.addConfigValue("height","500");
 		%>
-	<s:form action="edtBlock" method="post">
+	<s:form action="addBlock" method="post">
 		<s:hidden name="blockId"></s:hidden>
 		<s:if test="%{listBlockType.size>0}">
 			<s:combobox label="功能块类型" list="listBlockType" name="block.blockType" headerKey="-1" headerValue="----可选择----"  emptyOption="true"></s:combobox>
@@ -40,6 +40,6 @@
 		<s:textarea label="功能块内容" name="block.blockHtml"></s:textarea>
 		<s:submit value="提交"></s:submit>
 	</s:form>
-	<ckeditor:replace config="<%=settings %>" replace="edtBlock_block_blockHtml" basePath="/haole/ckeditor/" />
+	<ckeditor:replace config="<%=settings %>" replace="addBlock_block_blockHtml" basePath="/haole/ckeditor/" />
 </body>
 </html>

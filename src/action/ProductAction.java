@@ -15,9 +15,6 @@ import domain.Productmeta;
 
 public class ProductAction extends ActionSupport {
 	
-	//每页多少行记录
-	private int itemsPerPage = 10;
-	
 	/**
 	 * 按照请求渲染产品类别列表
 	 * @return
@@ -52,20 +49,28 @@ public class ProductAction extends ActionSupport {
 	 * @return
 	 */
 	public String listProduct() {
-		//TODO:优化为只输出选定的列
-		//产品完整介绍会很大，无谓地占用了空间，降低了效率
 		pageInfo = productService.getProductWithPage(10, pageNo);
 		pageInfo.setListPage("listProduct?pageNo=");
 		return "list";
 	}
 	
+	/**
+	 * 删除产品
+	 * @return
+	 */
 	public String delProduct(){
 		if(productId > 0){
-			productService.deleteProduct(productId);
+			productService.deleteProductById(productId);
 		}
+		//TODO:如果网站规模较大，查询列表的消耗较高的话，此处可以改进为通过Ajax删除
+		//本系统不在后台中引入Ajax
 		return "relist";
 	}
 	
+	/**
+	 * 编辑产品
+	 * @return
+	 */
 	public String edtProduct() {
 		Product product = productService.getProductById(productId);
 		if(product.getId() > 0){
@@ -149,9 +154,6 @@ public class ProductAction extends ActionSupport {
 	
 	//映射页码
 	private int pageNo;
-	
-	//映射产品列表
-	private List<Product> listProduct;
 	
 	//映射分页信息类
 	private PageInfo pageInfo;
@@ -315,13 +317,6 @@ public class ProductAction extends ActionSupport {
 	 */
 	public List<Category> getListCategory() {
 		return listCategory;
-	}
-
-	/**
-	 * @return the listProduct
-	 */
-	public List<Product> getListProduct() {
-		return listProduct;
 	}
 
 	/**
