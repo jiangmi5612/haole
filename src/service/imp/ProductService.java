@@ -42,10 +42,7 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public void addProduct(String productName, String productDescription,
-			float marketPrice, float productPrice, String productFeature,
-			String productInfo, Category category, int browseTimes,String img) {
-		Product product = new Product(productName, productDescription, marketPrice, productPrice, productFeature, productInfo, category, browseTimes,img);
+	public void addProduct(Product product) {
 		productDAO.addProduct(product);
 		
 	}
@@ -56,22 +53,7 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public void updateProduct(int id,String productName, String productDescription,
-			float marketPrice, float productPrice, String productFeature,
-			String productInfo, int categoryId, int browseTimes,String img) {
-		Product product = productDAO.getProductById(id);
-		product.setProductName(productName);
-		product.setProductDescription(productDescription);
-		product.setMarketPrice(marketPrice);
-		product.setProductPrice(productPrice);
-		product.setProductFeature(productFeature);
-		product.setProductInfo(productInfo);
-		
-		Category category = categoryDAO.getCategoryById(categoryId);
-		product.setCategory(category);
-		product.setBrowseTimes(browseTimes);
-		product.setImg(img);
-
+	public void updateProduct(Product product) {
 		productDAO.updateProduct(product);
 	}
 

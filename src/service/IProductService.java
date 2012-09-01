@@ -12,15 +12,11 @@ import domain.Productmeta;
 
 public interface IProductService {
 	
-	public void addProduct(String productName, String productDescription,
-			float marketPrice, float productPrice, String productFeature,
-			String productInfo, Category category, int browseTimes,String img);
+	public void addProduct(Product product);
 	
 	public void deleteProductById(int id);
 	
-	public void updateProduct(int id,String productName, String productDescription,
-			float marketPrice, float productPrice, String productFeature,
-			String productInfo, int categoryId, int browseTimes,String img);
+	public void updateProduct(Product product);
 	
 	public Product getProductById(int id);
 	

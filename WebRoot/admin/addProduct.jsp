@@ -14,11 +14,27 @@
 	    // 这个函数将来会被iframe用到
 	    function getImgPath()
 	    {
-	        //首先将iframe隐藏，然后转到本地地址
-	        $("#addProduct_img")[0].value = window.frames[0].window.name;
+	        $("#addProduct_product_img")[0].value = window.frames[0].window.name;
 	        $("#addProduct")[0].submit();
 	    }
+	    $(document).ready(function(){
+	    	$("#uploadImg").click(function(){
+	    		$.ajax({
+	    			url:'http://2.pysaeimg.sinaapp.com/',
+	    			type:'POST',
+	    			processData:false,
+	    			data:'',
+	    			dataType:'jsonp',
+	    			jsonp:'callback',
+	    			jsonpCallback:'jsonpCallback',
+	    			success:function(){
+	    				alert("success");
+	    			}
+	    		});
+	    	});
+	    });
 	</script>
+
 	<title>新增产品</title>
 </head>
 <body>
@@ -50,12 +66,18 @@
 	            sb.append(base.charAt(number));   
 	        } 
 	        String rdm = sb.toString();
-	        String key = "9ndf75ace";
+	        String key = "a";
 			//计算与SAE通信的MD5密码
 			String password = DigestUtils.md5Hex(rdm+key);
 		%>
 		<!-- 构建一个iframe用于上传文件 -->
-		<iframe id="imgUp" src="http://pysaeimg.sinaapp.com/?rdm=<%=rdm %>&password=<%=password %>" frameborder="0"></iframe>
+		<iframe id="imgUp" src="http://pysaeimg.sinaapp.com/?rdm=<%=rdm %>&password=<%=password %>&pageback=http://321haole.com:8080/haole/admin/showpic.html" frameborder="0"></iframe>
+		<s:if test="%{product.img.length() > 0}">
+			<script>
+				window.frames[0].window.name = "${product.img}";
+				window.frames[0].location = "showpic.html";
+			</script>
+		</s:if>
 		<s:form action="addProduct" method="post" theme="simple">
 		<table cellspacing="0" border="0" id="productBasicInfo">
 			<tr>
@@ -65,31 +87,31 @@
 		 	</tr>
 		 	<tr>
 		 		<td>
-		 			<label>产品名称：</label><s:textfield name="productName"></s:textfield>
+		 			<label>产品名称：</label><s:textfield name="product.productName"></s:textfield>
 		 		</td>
 		 	</tr>
 			
 			<tr>
 		 		<td>
-		 			<label>市场价：</label><s:textfield name="marketPrice"></s:textfield>
+		 			<label>市场价：</label><s:textfield name="product.marketPrice"></s:textfield>
 		 		</td>
 		 	</tr>
 			
 			<tr>
 		 		<td>
-		 			<label>价格：</label><s:textfield label="" name="productPrice"></s:textfield>
+		 			<label>价格：</label><s:textfield name="product.productPrice"></s:textfield>
 		 		</td>
 		 	</tr>
 			
 			<tr>
 		 		<td>
-		 			<label>产品简述：</label><s:textfield name="productDescription"></s:textfield>
+		 			<label>产品简述：</label><s:textfield name="product.productDescription"></s:textfield>
 		 		</td>
 		 	</tr>
 			
 			<tr>
 		 		<td>
-		 			<label>产品特性：</label><s:textarea name="productFeature" rows="6" cols="45"></s:textarea>
+		 			<label>产品特性：</label><s:textarea name="product.productFeature" rows="6" cols="45"></s:textarea>
 		 		</td>
 		 	</tr>
 		</table>
@@ -97,11 +119,11 @@
 			<div id="productDetail">
 			<label>产品详情：</label>
 	 			<s:div id="ckeditor">
-					<ckeditor:editor config="<%=settings %>" textareaAttributes="<%=attr %>" basePath="/haole/ckeditor/" editor="productInfo"  value="${productInfo}" />
+					<ckeditor:editor config="<%=settings %>" textareaAttributes="<%=attr %>" basePath="/haole/ckeditor/" editor="product.productInfo"  value="${product.productInfo}" />
 				</s:div>
 			</div>
-			<s:hidden name="browseTimes" value="0"></s:hidden>
- 			<s:hidden name="img"></s:hidden>
+			<s:hidden name="product.browseTimes" value="0"></s:hidden>
+ 			<s:hidden name="product.img"></s:hidden>
 			<s:hidden name="productId"></s:hidden>
 			<button type="button" value="提交" class="metro-button default right" onclick="getImgPath()">提交</button>
 		</s:form>

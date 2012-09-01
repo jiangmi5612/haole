@@ -53,12 +53,6 @@ public class BlockService implements IBlockService {
 		return blockDAO.getAllBlockWithPage(pageSize, page);
 	}
 
-	@Override
-	public List<Block> getBlockByBlockTypeWithAmount(String blockType, int amount) {
-		return blockDAO.getBlockByBlockTypeWithAmount(blockType, amount);
-		
-	}
-
 	private IBlockDAO blockDAO;
 
 	/**

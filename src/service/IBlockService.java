@@ -21,7 +21,5 @@ public interface IBlockService {
 	
 	public PageInfo getAllBlockWithPage(int pageSize,int page);
 	
-	public List<Block> getBlockByBlockTypeWithAmount(String blockType, int amount);
-	
 	public List<String> getBlockType();
 }
