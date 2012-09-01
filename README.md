@@ -15,6 +15,7 @@
 Struts 2.3.4
 Spring 3.1.2
 Hibernate 4.1.6
+DWR 2.0.10
 
 表结构
 ======
