@@ -65,7 +65,7 @@ public class ProductAction extends ActionSupport {
 	 */
 	public String listProduct() {
 		pageInfo = productService.getProductWithPage(10, pageNo);
-		pageInfo.setListPage("listProduct?pageNo=");
+		pageInfo.setListPage("listProduct.action?pageNo=");
 		return "list";
 	}
 	

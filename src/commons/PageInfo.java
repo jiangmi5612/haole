@@ -15,7 +15,7 @@ public class PageInfo {
 	private boolean isFirstPage;	//是否为第一页
 	private boolean isLastPage;	//是否为最后一页
 	
-	private String listPage;	//用于展示页面的链接地址，截止到pageNo=，例如listProduct?pageNo=
+	private String listPage;	//用于展示页面的链接地址，截止到pageNo=，例如listProduct.action?pageNo=
 	
 	/**
 	 * 独立构造函数

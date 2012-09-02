@@ -38,7 +38,7 @@ public class BlockAction extends ActionSupport {
 	
 	public String listBlock() {
 		pageInfo = blockService.getAllBlockWithPage(20, pageNo );
-		pageInfo.setListPage("listBlock?pageNo=");
+		pageInfo.setListPage("listBlock.action?pageNo=");
 		return "list";
 	}
 	

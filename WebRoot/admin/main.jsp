@@ -29,11 +29,11 @@
 	           {id:111,pId:11,name:"增加类别",url:"addCategory.jsp",target:"adminPages"},
 	           {id:112,pId:11,name:"类别列表",url:"listCategory.action",target:"adminPages"},
 	           {id:12,pId:1,name:"产品管理",open:true},
-	           {id:121,pId:12,name:"增加产品",url:"renderCatList",target:"adminPages"},
+	           {id:121,pId:12,name:"增加产品",url:"renderCatList.action",target:"adminPages"},
 	           {id:122,pId:12,name:"产品列表",url:"listProduct.action",target:"adminPages"},
 	           {id:13,pId:1,name:"功能块",open:true},
-	           {id:131,pId:13,name:"增加功能块",url:"renderBlockTypeList",target:"adminPages"},
-	           {id:131,pId:13,name:"功能块列表",url:"listBlock",target:"adminPages"}
+	           {id:131,pId:13,name:"增加功能块",url:"renderBlockTypeList.action",target:"adminPages"},
+	           {id:131,pId:13,name:"功能块列表",url:"listBlock.action",target:"adminPages"}
 	           ];
 	
 	$(document).ready(function(){

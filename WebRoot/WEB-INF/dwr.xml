@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.org/dwr/dwr30.dtd">
+
+<dwr>
+  <allow>
+    <create creator="spring" javascript="ProductService">
+      <param name="beanName" value="productService"/>
+      <include method="getProductByCatIdWithPage" /> 
+    </create>
+    <create creator="spring" javascript="BlockService">
+      <param name="beanName" value="blockService"/>
+      <include method="getBlockByBlockTypeWithPage" /> 
+      <include method="getBlockById" /> 
+    </create>
+    <convert converter="hibernate3" match="domain.Product">
+    	<param name="exclude" value="productmetas"/>
+    </convert>
+    <convert converter="hibernate3" match="domain.Category" />
+    <convert converter="hibernate3" match="domain.Block" />
+    <convert converter="bean" match="commons.PageInfo" />
+  </allow>
+</dwr>
