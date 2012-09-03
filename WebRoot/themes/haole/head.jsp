@@ -8,16 +8,24 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/less-1.3.0.js"></script>
     <script type="text/javascript" src="js/slides.min.jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.tmpl.min.js"></script>
+    
+    <!-- 注意此处与后台有较强的耦合 -->
+    <script type='text/javascript' src='/haole/dwr/interface/ProductService.js'></script>
+  	<script type='text/javascript' src='/haole/dwr/engine.js'></script>
+  	<script type='text/javascript' src='/haole/dwr/util.js'></script>
+  	
+  	<script type="text/javascript" src="themes/haole/data.js"></script>
     <script>
+    	//加载幻灯片
         $(function(){
             $("#slides").slides({
             	preload:true,
             	preloadImage:'image/loading141.gif',
             	pagination:false,
             	generatePagination:false,
-            	play:2000,
-            	pause:4000,
-            	hoverPause:true
+            	play:5000,
+            	pause:10000
             });
         });
     </script>

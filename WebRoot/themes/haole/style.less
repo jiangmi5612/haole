@@ -1,5 +1,7 @@
 //定义主色调
 @mainColor:#085080 + 20;
+//定义基准宽度
+@baseWidth:960px;
 *{ 
 border:none; 
 margin:0;
@@ -23,8 +25,14 @@ a{ text-decoration:none;}
 .left{
     float:left;
     }
+.test{
+    border:1px solid gray;
+    }
+.bold{
+    font-weight:bold;
+    }
 #page-wrapper{
-  width: 960px;
+  width: @baseWidth;
   margin: 0 auto;
 }
 .header{
@@ -34,9 +42,8 @@ a{ text-decoration:none;}
 .logo{
     color: @mainColor;
     font-size: 22px;
-    font-weight: bold;
+    .bold;
     width:200px;
-    height:120px;
     text-shadow: 1px 1px 2px #000000;
     .left;
     position:relative;
@@ -79,17 +86,19 @@ a{ text-decoration:none;}
 	background-image: linear-gradient(270deg, #06395c 0%,@mainColor 100%);
 	width: 100%;
 	height: @navHeight;
+    border-radius: 5px;
+    z-index:1000;
 }
 .nav_ul{ 
 	margin:0;
 	position:relative;
-	text-align:left;
+	//text-align:left;
 }
 .nav_item{
 	display:block;
 	height:@navHeight;
 	float:left;
-	position:relative;
+	//position:relative;
 }
 .nav_item a{
 	display:block;
@@ -119,9 +128,10 @@ a{ text-decoration:none;}
     background: #fcf4ea;
     border: 2px solid #085080;
     width: 210px;
-    height: 280px;
+    height: 282px;
     .left;
-    margin-top:-1px;
+    margin-top:-3px;
+    z-index:-10;
 }
 .hNav_item{
 	height:40px;
@@ -142,10 +152,9 @@ a{ text-decoration:none;}
 }
 /*轮播图片*/
 #slides{
-    width:740px;
+    width:746px;
     float:right;
-    height:280px;
-    margin-top:2px;
+    height:283px;
     .slides_container{
         width:100%;
         height:100%;
@@ -157,14 +166,16 @@ a{ text-decoration:none;}
 /*特色产品*/
 #features{
     width:100%;
-    height:208px;
+    min-height:208px;
     position:relative;
+    margin-top:10px;
     }
 .feature_product{ 
 	width: 315px;
-	height: 208px;
+	height: 210px;
 	float:left;
 	margin-right:5px;
+    position:relative;
 }
 .feature_last{
 	float:right;
@@ -182,20 +193,21 @@ a{ text-decoration:none;}
 .feature_text{
 	float:left;
 	font-size: 10pt;
-	position: relative;
+	position: absolute;
 	top: 40px; 
-	left:20px;
-}
-.feature_text p{
-	line-height:23px;
-	font-size:12px;
-	overflow:hidden;
+	left:180px;
+    p{
+        line-height:23px;
+    	font-size:12px;
+    	overflow:hidden;
+    }
 }
 .feature_title{
+    width:250px;
 	height:25px;
 	line-height:25px;
 	position:absolute;
-	bottom:15px;
+	bottom:10px;
 	font-weight:bold;
 	overflow:hidden;
 }
@@ -207,7 +219,7 @@ a{ text-decoration:none;}
 	background: #ffffff;
 	border: 1px solid rgba(8, 81, 130, 0.51);
 	width: 473px;
-	height: 450px;
+    min-height:350px;
 	border-radius: 3px;
 	float:left;
     margin-bottom:10px;
@@ -228,14 +240,32 @@ a{ text-decoration:none;}
 	position: relative;
 	top: 0; 
 	left: 0;
+    .category_title{
+        height:36px;
+        line-height:36px;
+        font-size:15px;
+        font-weight:bold;
+        padding-left:5px;
+        }
 }
-.category_title{
-	font-size: 12pt;
-	font-weight: bold;
-	position: absolute;
-	top: 7px; 
-	left: 15px;
-}
+.category_item{
+    .left;
+    width:149px;
+    margin:4px;
+    .item_img{
+        width:120px;
+        height:120px;
+        margin:0 14px;
+        }
+    .item_title{
+        display:block;
+        height:36px;
+        line-height:18px;
+        font-size: 12px;
+    	overflow:hidden;
+        padding:0 4px;
+        }
+    }
 .more{
 	color: #000;
 	font-size: 9pt;
@@ -248,7 +278,8 @@ a{ text-decoration:none;}
 .footer{
 	background: #085080;
 	border: none;
-	width: 100%;
+	width: 960px;
+    margin:0 auto;
 	height: 71px;
 	border-radius: 0px;
 }

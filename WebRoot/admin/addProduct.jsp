@@ -17,22 +17,6 @@
 	        $("#addProduct_product_img")[0].value = window.frames[0].window.name;
 	        $("#addProduct")[0].submit();
 	    }
-	    $(document).ready(function(){
-	    	$("#uploadImg").click(function(){
-	    		$.ajax({
-	    			url:'http://2.pysaeimg.sinaapp.com/',
-	    			type:'POST',
-	    			processData:false,
-	    			data:'',
-	    			dataType:'jsonp',
-	    			jsonp:'callback',
-	    			jsonpCallback:'jsonpCallback',
-	    			success:function(){
-	    				alert("success");
-	    			}
-	    		});
-	    	});
-	    });
 	</script>
 
 	<title>新增产品</title>
@@ -71,7 +55,7 @@
 			String password = DigestUtils.md5Hex(rdm+key);
 		%>
 		<!-- 构建一个iframe用于上传文件 -->
-		<iframe id="imgUp" src="http://pysaeimg.sinaapp.com/?rdm=<%=rdm %>&password=<%=password %>&pageback=http://321haole.com:8080/haole/admin/showpic.html" frameborder="0"></iframe>
+		<iframe id="imgUp" src="http://pysaeimg.sinaapp.com/?rdm=<%=rdm %>&password=<%=password %>&site=321haole&pageback=http://321haole.com:8080/haole/admin/showpic.html" frameborder="0"></iframe>
 		<s:if test="%{product.img.length() > 0}">
 			<script>
 				window.frames[0].window.name = "${product.img}";
@@ -82,7 +66,7 @@
 		<table cellspacing="0" border="0" id="productBasicInfo">
 			<tr>
 				<td>
-		 			<label>产品类别：</label><s:select list="listCategory" listKey="id" listValue="catName" name="categoryId"></s:select>
+		 			<label>产品类别：</label><s:select list="listCategory" listKey="id" listValue="catName" name="categoryId" value="%{categoryId}"></s:select>
 		 		</td>
 		 	</tr>
 		 	<tr>

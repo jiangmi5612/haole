@@ -77,8 +77,6 @@ public class ProductAction extends ActionSupport {
 		if(productId > 0){
 			productService.deleteProductById(productId);
 		}
-		//TODO:如果网站规模较大，查询列表的消耗较高的话，此处可以改进为通过Ajax删除
-		//本系统不在后台中引入Ajax
 		return "relist";
 	}
 	
@@ -89,6 +87,7 @@ public class ProductAction extends ActionSupport {
 	public String edtProduct() {
 		product = productService.getProductById(productId);
 		if(product.getId() > 0){
+			categoryId = product.getCategory().getId();
 			return INPUT;
 		}
 		else {
