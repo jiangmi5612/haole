@@ -64,7 +64,16 @@ public class ProductAction extends ActionSupport {
 	 * @return
 	 */
 	public String listProduct() {
-		pageInfo = productService.getProductWithPage(10, pageNo);
+		//先渲染类别列表
+		if (listCategory == null || listCategory.size() <= 0) {
+			listCategory = categoryService.getAllCategorie();
+		}
+		if (categoryId > 0) {
+			pageInfo = productService.getProductByCatIdWithPage(categoryId, 10, pageNo);
+		}
+		else {
+			pageInfo = productService.getProductWithPage(10, pageNo);
+		}
 		pageInfo.setListPage("listProduct.action?pageNo=");
 		return "list";
 	}

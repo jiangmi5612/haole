@@ -8,11 +8,22 @@
 <link rel="stylesheet/less" type="text/css" href="style.less" />
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/less-1.3.0.js"></script>
+<script>
+	//绑定表单提交事件
+	$(function(){
+		$("#categoryId").change(function(){
+			$("form")[0].submit();
+		});
+	});
+</script>
 <title>产品列表</title>
 </head>
 <body>
 	<div>
-		<!-- 表现方式二 -->
+		<s:form action="listProduct" method="GET" theme="simple">
+			<span><s:select list="listCategory" listKey="id" listValue="catName" name="categoryId" id="categoryId" ></s:select>
+			</span>
+		</s:form>
 		<s:iterator value="%{pageInfo.list}" id="product" status="st">
 			<div class="list_item">
 				<span class="list_item_img">

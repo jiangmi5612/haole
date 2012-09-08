@@ -83,7 +83,7 @@ public class ProductDAO implements IProductDAO {
 		countQuery.setInteger("categoryId", categoryId);
 		
 		//构建返回数据查询
-		hsql="FROM Product WHERE category=:categoryId ORDER BY id DESC";
+		hsql="SELECT new ProductRow(p.id,c.catName,p.productName,p.productDescription,p.productPrice,p.browseTimes,p.img) FROM Product p INNER JOIN p.category c WHERE p.category=:categoryId ORDER BY p.id DESC";
 		Query listQuery = this.sessionFactory.getCurrentSession().createQuery(hsql);
 		listQuery.setInteger("categoryId", categoryId);
 		
@@ -105,7 +105,7 @@ public class ProductDAO implements IProductDAO {
 		countQuery.setString("productName", productName);
 		
 		//构建返回数据查询
-		hsql="SELECT new ProductRow(p.id,c.catName,p.productName,p.productDescription,p.productPrice,p.browseTimes,p.productImg) FROM Product p INNER JOIN FETCH p.category c WHERE p.productName=:productName ORDER BY id DESC";
+		hsql="SELECT new ProductRow(p.id,c.catName,p.productName,p.productDescription,p.productPrice,p.browseTimes,p.img) FROM Product p INNER JOIN p.category c WHERE p.productName=:productName ORDER BY p.id DESC";
 		Query listQuery = this.sessionFactory.getCurrentSession().createQuery(hsql);
 		listQuery.setString("productName", productName);
 		

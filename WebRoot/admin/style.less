@@ -8,6 +8,7 @@
 	padding:0;
 	text-decoration:none;
 }
+input,button,select,textarea,span{ outline:none;}
 //通用类定义
 .clear{
     clear:both;
@@ -187,6 +188,12 @@ input[type="file"]:hover,button:hover,input[type="submit"]:hover,.metro-button:h
         bottom:5px;
     }
 }
+/*远端crop.html*/
+#btnDoCrop{
+    position:absolute;
+    top:250px;
+    left:5px;
+    }
 /*showpic.html*/
 #img{
     width:@imgFrameWithAndHeight;
@@ -226,7 +233,7 @@ input[type="file"]:hover,button:hover,input[type="submit"]:hover,.metro-button:h
         width:100px;
         }
     .list_item_title{
-        width:400px;
+        width:380px;
         height:25px;
         line-height:25px;
         font-size:23px;

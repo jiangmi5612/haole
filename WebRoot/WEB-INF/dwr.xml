@@ -20,5 +20,6 @@
     <convert converter="hibernate3" match="domain.Category" />
     <convert converter="hibernate3" match="domain.Block" />
     <convert converter="bean" match="commons.PageInfo" />
+    <convert converter="bean" match="domain.ProductRow" />
   </allow>
 </dwr>
